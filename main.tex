@@ -1,0 +1,105 @@
+\documentclass{scrbook}
+%\hypersetup{colorlinks}% uncomment this line if you prefer colored hyperlinks (e.g., for onscreen viewing)
+%% Check out the stuff commented with three %'s
+
+\usepackage[margin=1.2in]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{graphicx}
+%\usepackage{fancyhdr}
+\usepackage{textcomp}
+\usepackage{comment}
+\usepackage[framemethod=tikz]{mdframed}
+% \usepackage[pdftex,
+%             pdfauthor={Prof. Vikram M. Gadre},
+%             pdftitle={EE210.1X Lecture Notes},
+%             pdfsubject={Signals and Systems}]{hyperref}
+% \pagestyle{fancy}
+% \lhead{IITBombayX}
+% \rhead{EE210.1X}
+%\cfoot{\thepage}
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0.4pt}
+
+% Book metadata
+\title{\Huge Signals and Systems}
+\author{\Large Dr. Vikram Gadre}
+%\publisher{Publisher of This Book}
+%%%\usepackage{booktabs}
+\usepackage{graphicx}
+%%%\setkeys{Gin}{width=\linewidth,totalh.eight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+%
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+% Generates the index
+\usepackage{makeidx}
+\makeindex
+\begin{document}
+
+% Front matter
+\frontmatter
+
+% r.1 blank page
+%\blankpage
+% r.3 full title page
+\maketitle
+
+\begin{comment}
+% v.4 copyright page
+\newpage
+\begin{fullwidth}
+~\vfill
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+Copyright \copyright\ \the\year\ \thanklessauthor
+
+\par\smallcaps{Published by \thanklesspublisher}
+
+\par\smallcaps{tufte-latex.googlecode.com}
+
+\par Licensed under the Apache License, Version 2.0 (the ``License''); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at \url{http://www.apache.org/licenses/LICENSE-2.0}. Unless
+required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an \smallcaps{``AS IS'' BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND}, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.\index{license}
+
+%\par\textit{First printing, \monthyear}
+\end{fullwidth}
+\end{comment}
+% r.5 contents
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\begin{comment}
+% r.7 dedication
+\cleardoublepage
+~\vfill
+\begin{doublespace}
+\noindent\fontsize{18}{22}\selectfont\itshape
+\nohyphenation
+Dedicated to those who appreciate \LaTeX{} 
+and the work of \mbox{Edward R.~Tufte} 
+and \mbox{Donald E.~Knuth}.
+\end{doublespace}
+\vfill
+\vfill
+\end{comment}
+
+% r.9 introduction
+\cleardoublepage
+\mainmatter
+
+\part{Frequency Domain}
+\include{module-2-chapter-1}
+
+\end{document}

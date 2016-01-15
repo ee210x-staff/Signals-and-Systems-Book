@@ -6,7 +6,6 @@ In this discussion we discuss the problem of reconstruction of the signal if we 
 %about what we want to do with the sampled signal, i.e. whether we want to hold on to the sampled signal or just let it go. 
 
 \subsection{Interpolation}
-\label{sec:Graphical explanation}
 Interpolate means to complete the waveform in between the samples. Interpolation is a method of constructing new data points within the range of a discrete set of known data points.
 
 \subsubsection{Graphical Explanation}
@@ -16,7 +15,7 @@ Let us consider a function as shown in fig. 1 and sample it with a time period o
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.6\textwidth]{M3L11-fig1.jpg}
-\caption{\label{fig:1} A sampled function}
+\caption{A sampled function}
 \end{figure}
 
 There are various ways in which we can interpolate the given samples\\
@@ -28,7 +27,7 @@ There are various ways in which we can interpolate the given samples\\
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.6\textwidth]{M3L11-fig2.jpg}
-\caption{\label{fig:2} Sample and Hold}
+\caption{Sample and Hold}
 \end{figure}
 
 
@@ -41,7 +40,7 @@ In Figure 3, the green lines form the linearly interpolated signal obtained by i
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.6\textwidth]{M3L11-Fig3.jpg}
-\caption{\label{fig:3} Linear interpolation}
+\caption{Linear interpolation}
 \end{figure}
 
 
@@ -54,7 +53,7 @@ Systematically the sample and hold can be understood as follows:
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{M3L11-fig4.jpg}
-\caption{\label{fig:4} Systematical representation of sample and hold}
+\caption{Systematical representation of sample and hold}
 \end{figure}
 
 The impulse response of the linear shift invariant system in the above figure is a pulse as shown in fig 5.
@@ -62,7 +61,7 @@ The impulse response of the linear shift invariant system in the above figure is
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\textwidth]{M3L11-Fig5.jpg}
-\caption{\label{fig:5} Impulse response of linear shift invariant system.
+\caption{Impulse response of linear shift invariant system.
 }\end{figure}
 
 \subsection{Frequency domain analysis}
@@ -105,7 +104,7 @@ Consider such an $x(t)$ with Fourier Transform as shown in Figure 6.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.9\textwidth]{M3L11-fig6.jpg}
-\caption{\label{fig:6} Fourier transform of x(t)}
+\caption{Fourier transform of x(t)}
 \end{figure}
 
 Then, after passing the signal through the ideal sampler, the sampled signal obtained, $X_s(t)$, will have the spectrum $X_s(f)$ as shown in Figure 7.
@@ -114,7 +113,7 @@ Then, after passing the signal through the ideal sampler, the sampled signal obt
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.9\textwidth]{M3L11-Fig7.jpg}
-\caption{\label{Fig:7} Spectrum of the sampled signal: $X_{S}(f)$}
+\caption{Spectrum of the sampled signal: $X_{S}(f)$}
 \end{figure}
 
 Sketch of 'hold' frequency response.
@@ -126,7 +125,7 @@ Magnitude $\implies$
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.9\textwidth]{M3L11-Fig8.jpg}
-\caption{\label{Fig:8} Hold frequency response}
+\caption{Hold frequency response}
 \end{figure}
 
 If we superimpose both hold frequency response and $X_s(f)$,
@@ -134,7 +133,7 @@ If we superimpose both hold frequency response and $X_s(f)$,
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1.2\textwidth]{M3L11-Fig9.jpg}
-\caption{\label{Fig:9} Superimposing hold freq. response on $X_{s}(f)$}
+\caption{Superimposing hold freq. response on $X_{s}(f)$}
 \end{figure}
 
 
@@ -161,7 +160,7 @@ Sketch of equalizer frequency response.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{M3L11-Fig_10.jpg}
-\caption{\label{Fig:10} Equalizer freq. response}
+\caption{Equalizer freq. response}
 \end{figure}
 
 

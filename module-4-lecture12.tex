@@ -1,0 +1,61 @@
+\section{Module 4: Lecture 12\\Stability in Laplace and Z-Domains}
+
+\subsection{Introduction}
+We developed an understanding of the stability of rational systems in the continuous independent variable. We saw that how Region of Convergence (ROC) of Laplace transform of continuous time system helps in determining whether the system is stable or not. 
+
+In this lecture we first look at case when poles are at imaginary axis, what does it contribute to the impulse response and we also discuss when is a rational LSI (Linear Shift Invariant) system both causal and stable.
+
+Next we talk about what happens when the system, described in the discrete time domain is linear, shift-invariant and the system impulse response has a Z-transform.
+
+\subsection{Poles on the imaginary axis}
+If we have poles on imaginary axis then obviously imaginary axis cannot be in ROC and hence the system will be unstable. As we saw in previous lecture that integrator is unstable. We can relate it to the fact that it has one pole on zero (which is of course on imaginary axis) and hence the system is unstable. Now, if instead of zero we have poles at 2 complex conjugate points on imaginary axis $j\Omega_{c}$ and $-j\Omega_{c}$. If the poles are simple, then $H(s)$ will be of the form - $\frac{A}{s-j\Omega_{c}} + \frac{\bar{A}}{s+j\Omega_{c}}$ in the partial fraction expansion assuming all the coefficients in Laplace transform are real. Now, the above terms will contribute $Ae^{j\Omega_{c}t} + \bar{A}e^{-j\Omega_{c}t}$ multiplied with $u(t)$ or $u(-t)$ to the impulse response. This term can then be written as $2\operatorname{Re}(Ae^{j\Omega_{c}t}) = 2\operatorname{Re}(Ae^{j\Omega_{c}t}) + 2A_{0}cos(\Omega_{c}t + \phi+{0})$ where $A_{0}$ is real. SO, we get a sinusoidal component due to complex conjugate poles on imaginary axis. 
+\par One can show that for an LSI system of the form we described above, if we give a bounded input $x(t) = cos(\Omega_{c}t).u(t)$ as input to the system then we get a polyex term at the output of the system- $y(t) = (Bt + c)cos(\Omega_{c}t + \phi_{1})$ for some constants $B$ and $C$. The polynomial term in the above polyex term, i.e, $Bt + C$ is what makes the output unbounded and hence the system unstable for nonzero $B$. Note that input is of same frequency as of the filter impulse response. This phenomenon where same frequency input is giving unbounded output is "Resonance" effect. For an integrator resonance will be at zero frequency input multiplied bu unit step function, i.e., a DC signal multiplied by unit step function.
+\par We can similarly show that even if we take repeated poles on imaginary axis instead of simple poles we will still get unbounded output for some bounded input and the system will be unstable. So, it essentially completes the argument that poles on imaginary axis makes the system unstable.
+
+\subsection{Causality and Stability of Rational LSI system}
+Previously, we saw that condition for causality of rational LSI system is that its ROC must include $\operatorname{Re}(s) \to \infty$, and for stability ROC must include imaginary axis $\operatorname{Re}(s) = 0$. The above conditions simply imply that for rational LSI system to be both stable and causal, no pole of the system should be in right half plane. So, a rational LSI system is causal and stable if and only if all of its poles lie strictly in left half plane. Next we would look at conditions for causality and stability of rational systems in case of discrete independent variable.
+
+\subsection{Stability analysis in Z plane}
+What is in the Z transform that determines the stability of the system? For causality we have already analysed that the extreme contour in the Z plane i.e. $|z| \rightarrow \infty $ should be included in the region of convergence in the case of causality. Now what is the condition for stability? Can we look at the ROC and come to a conclusion about the stability or otherwise? 
+
+Now let’s go to our point of discussion. We are going to deal with the discrete independent variable system. We have an input $x[n]$ and corresponding output $y[n]$; assume the system is linear, shift-invariant and also rational i.e. the system impulse response $h[n]$ has a Z-transform $H(z)$ which is a rational function of $z$.
+
+$$h[n] \xrightarrow{Z} H(z) \quad \text{ROC : } R_H$$
+
+Now what do we need to convice ourselves that this $R_H$ is central to the stability of the system? Let's take an example to do that.
+
+Let $H(z) = \frac{1}{1 - \frac{1}{2}z^{-1}}$. Here, the pole is at $Z = 1/2$; with that we have to possible regions of convergence. One is inside the circle $|z| = 1/2$ and the other is outside the circle in the z-plane. Let's invert the z transform in each ROC.
+
+\begin{enumerate}
+\item inside the circle : $h[n] = -\left(\frac{1}{2}\right)^nu[-n-1]$
+\item outside the circle : $h[n] = \left(\frac{1}{2}\right)^nu[n]$
+\end{enumerate}
+
+
+In the first case for the ROC inner part of circle $|z| = 1/2$ the inverse Z transform is not absolutely summable so the system is unstable whereas in the second case for the ROC outer portion of the circle $|z| = 1/2$ the inverse Z transform is absolutely summable and so the system is stable.\\
+
+So essentially we have the same expression for $H(z)$ but for two different regions of convergence we get two different systems; one is stable and the other one is unstable. This substantiates our argument that it is region of convergence that determines the stability or instability of the system. Of course, the expression has an indirect role. So let’s see that indirect role by another example.
+
+Let $H(z) = \frac{1}{1 - 2z^{-1}}$. Here, the pole is at $|z| = 2$. With that we have two possible regions of convergence. One is inside the circle $|z| = 2$ and the other is outside that circle. Let’s invert the Z transform in each ROC.
+
+\begin{enumerate}
+\item inside the circle : $h[n] = -\left(2\right)^nu[-n-1]$
+\item outside the circle : $h[n] = \left(2\right)^nu[n]$
+\end{enumerate}
+
+Here, for the first case $h[n]$ is absolutely summable hence the system is stable whereas in the second case $h[n]$ diverges for higher values of $n$ so it is not absolutely summable and so the system is not stable.\\
+
+Here, again we have the same expression for $H(z)$ but for two different regions of convergence we get two different systems : one is stable and the other one is unstable. But now the roles of the regions of convergence reversed. The difference was in the pole of $H(z)$. In the first expression we had the pole at $z = 1/2 (< 1)$ and in the second expression at $z = 2 (> 1)$. In the case where the ROC was the interior part of the circle with centre at $z = 0$ and radius equal to the magnitude of corresponding pole we got a left sided signal which is absolutely summable in the second case but not in the first case. Similarly when the ROC was exterior part of the same circle in both cases we got a right sided signal which was absolutely summable in the first case and is not absolutely summable in the second case.\\
+
+In either case we have a polyex term like before. Here the poles are simple, so the poly part is trivial i.e. it is just a constant. The exponential part is nontrivial, the left sided exponential is decaying if the pole is exterior with a magnitude greater than one, so remember it's the magnitude of the pole which is central. That's not surprising because, the regions of convergence are essentially between poles, so you see what kinds of regions of convergence we have in the z- plane, we are familiar with that.\\
+
+How do you determine all the possible regions of convergence? You draw circles if you’re talking about a rational system. We begin from z equal to zero and move outwards, identify all clean disks between these circles. A clean disk is one with no poles inside. Each such disk is a region of convergence. Now, you also know that any particular region of convergence is such that a given pole is either to the exterior of that region of convergence or to the interior. For a given region of convergence with the same expression, take a given pole. It is either to the exterior or to the interior of the ROC. Now write a partial fraction expansion, identify terms for that pole, invert terms for that pole. So you know if you focus on one pole, you can clearly invert the terms, knowing whether the pole is exterior or interior. If it is exterior to the region of convergence, it contributes left sided terms and in general if the pole is repeated you get a polyex term. The polynomial would be nontrivial, a polynomial in n. So you’d get a polyex term with degree more than just a constant, if the pole is repeated. But it would be a left sided exponential, in contrast if the pole is to the interior of the region of convergence you get a right sided exponential with a polynomial in n multiplying it.\\
+
+\subsection{Conclusion}
+Magnitude of the pole is central to the analysis of stability. Any particular region of convergence is such that a given pole is either to the exterior or to the interior to the circle. If you focus on one pole, you can clearly invert the terms, knowing whether the pole is exterior or interior to the circle.
+
+
+
+
+
+

@@ -23,7 +23,7 @@ Since we are processing the signal $x(t)$ in discrete time, our system along wit
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.4\textwidth]{sys.jpg}
-\caption{\label{fig:fig6}}
+\caption{}
 \end{figure}
 
 We'll choose our system to be the one described by $y[n]=\frac{x[n]+x[n-1]}{2}$. But for doing this, first we need to sample $x(t)$ to obtain x[n]. We have also decided to normalize our units, i.e choosing sampling interval as our unit of time, and sampling frequency as $f_s=1$ (for cycles/samples per second frequency) or $\Omega_s=2\pi$ (for angular frequency). In the chosen example, we have signal $x(t)$, which is a speech signal, sampled at 10 kHz i.e. taking 10,000 samples in each second. So our samples can be given as $x(nT_s)$, where $n\in\mathbb{Z}$ and $T_s = 0.1$ms.\\
@@ -61,7 +61,7 @@ As $\omega$ is the normalized angular frequency, spectrum of our signal would be
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.4\textwidth]{sys.jpg}
-\caption{\label{fig:fig6}}
+\caption{}
 \end{figure}
 
 We had our system description as $y[n]=\frac{x[n]+x[n-1]}{2}$. Let us analyse what happens to a sinusoidal signal input. We are choosing sinusoid as we already know how to decompose a signal (if at all it is possible) in terms of sinusoids, and we have all the tools studied during our foray into Fourier domain analysis to help us. Speech signal, in particular, is usually bandlimited by 4 kHz, where lower frequencies are usually of the male voices (0-2 kHz) and female voices generally occupy higher frequencies (2-4 kHz). In our speech signal, we've considered a mixture of both male and female voices, as a general case. And we have sampled this signal at 10 kHz.\\
@@ -82,7 +82,7 @@ In this form, we can easily identify the magnitude and phase factor, by which $e
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.7\textwidth]{cos.jpg}
-\caption{\label{fig:fig6}}
+\caption{}
 \end{figure}
 
 Remembering that 0-2 kHz represents predominantly the male voices, and 2-4 kHz the female voices, we see that this constant has higher magnitude for male voices, in general, than for the female voices. So this system enhances the male voices and suppresses the female voices.\\

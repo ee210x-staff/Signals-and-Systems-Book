@@ -16,7 +16,7 @@ We can satisfy the above condition by using nonideal sampling. So we will try to
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{fig1.png}
-\caption{\label{fig:fig1}The Pulse Train with period $T_{s}$}
+\caption{The Pulse Train with period $T_{s}$}
 \end{figure}
 Let's call this pulse train '$p(t)$' and let's try to find it's Fourier series expansion. We will use complex Fourier series, to write
 \begin{align*}
@@ -49,7 +49,7 @@ Let us plot the sinc function and see how it looks like:\\
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.3\textwidth]{fig2.png}
-\caption{\label{fig:fig2}The 'sinc' function.}
+\caption{The 'sinc' function.}
 \end{figure}
 In ideal sampling, we had $\frac{\Delta}{T_{s}}$ very small, tending to zero. In that case we had all our samples taken very closely, around zero. Applying $\Delta\rightarrow0$ to the expression of $C_{k}$ (scaled), we have $C_{k}\approx\frac{1}{T_{s}}$ .i.e. all the $C_{k}$'s are same. However, if $\Delta\ne0$, we have the expression for $C_{k}$ as stated earlier, involving sinc function. We can write it as 
 \begin{equation}
@@ -59,7 +59,7 @@ Here $\gamma_0$ is a constant. Let's look at the Fourier series representation o
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.3\textwidth]{fig3.png}
-\caption{\label{fig:fig3}The sampled version of sinc($r$). $r$ is on the x-axis. Some of the $C_{i}$'s are labeled.}
+\caption{The sampled version of sinc($r$). $r$ is on the x-axis. Some of the $C_{i}$'s are labeled.}
 \end{figure}
 Note that the distance between two consecutive samples is $\frac{\Delta}{T_{s}}$. We can see that as $\Delta\rightarrow0$, we will have all our samples around zero. If $\frac{\Delta}{T_{s}}$ is quite large, after $C_{0}$, the second sample itself will be not from the main lobe. However, if we choose $\frac{\Delta}{T_{s}}$ to not be too large yet not too small, we would have first few samples from main lobe, and we can observe that they will be of decreasing magnitude.
 \subsection{Sampling with the Pulse Train}
@@ -90,7 +90,7 @@ We'll see how all of this looks graphically: Consider $x(t)$ to be bandlimited s
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.35\textwidth]{fig4.png}
-\caption{\label{fig:fig4}$X(\Omega)$}
+\caption{$X(\Omega)$}
 \end{figure}
 
 Note that this Fourier representation corresponds to a real and even signal $x(t)$.\\
@@ -106,7 +106,7 @@ Following the procedure given in the previous section, we obtain following spect
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.7\textwidth]{fig5.png}
-\caption{\label{fig:fig5}Fourier transform when we disobey Nyquist principle: shows overlaps.}
+\caption{Fourier transform when we disobey Nyquist principle: shows overlaps.}
 \end{figure}
 
 One feature we can clearly see in this graph is that carbon copies of the original spectrum are overlapping: which we had already seen when we had sampled a similar signal with impulse train instead of pulse train (ideal sampling). However, there's one more remarkable thing we can see here: As the first few $C_k$'s are decreasing in magnitude, we observe that the 'strength' of the carbon copies is reducing, at least for first few $k$'s. So the carbon copies still overlap, but their strength is lower, or, the magnitude of overlap is less now, the region in which such overlap is occuring is closer to the original spectrum, if compared with the Fourier transform of the same signal, sampled using impulse train.\\
@@ -115,7 +115,7 @@ Now we will see what happens if we sample this signal 'obeying;' the Nyquist pri
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.7\textwidth]{fig6.png}
-\caption{\label{fig:fig6}Fourier transform when we obey Nyquist principle: no overlap is seen.}
+\caption{Fourier transform when we obey Nyquist principle: no overlap is seen.}
 \end{figure}
 
 Here, no overlap is seen between the original spectrum and any of its carbon copies, similar to when we had sampled using impulse train. But we can still see the magnitude of the first few carbon copies decreasing.\\

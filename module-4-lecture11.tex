@@ -1,0 +1,122 @@
+\section{Module 4: Lecture 11\\Determining system stability using Laplace transforms}
+
+
+\subsection{Introduction}
+In the previous session, we looked at the causality of a linear shift invariant system by looking at the system function. We now realize the importance of the region of convergence, which had the information about causality. In this session, we will study the property of stability of a linear shift invariant system by just looking at the system function and the importance of region of convergence in determining stability.
+
+Throughout the process, we will look at both continuous and discrete variable systems, that is both the Laplace transform (a function of s) and Z transform (a function of z). In this lecture, we will focus only on the continuous variable systems.
+
+We also look at the basic disqualification about the stability of the system by analyzing the system function. We will see in this lecture that if there is differentiator or integrator in the system function, there will be immediate instability.
+
+
+\subsection{Significance of Region of Convergence in Stability}
+Assume Linear Shift Time Invariant System which has an Laplace Transformable impulse response $h(t)$ with the region of convergence $R_X$.
+\begin{center}
+$h(t) \xrightarrow{\ \mathcal{L}\ } H(s)\ ;\ R_X $.  \\
+\end{center}
+Assume that $H(s)$ is rational. Thus, we are not looking at all continuous variable Laplace transformable impulse responses because working with general impulse responses will be tougher and rational functions itself is a big exhaustive set.
+Now, the expression will not contain the information about stability so we will have to identify the region of  convergence also. 
+\paragraph*{ }
+For example, \\
+$H(s) = \frac{1}{s+2}$ with pole $s = -2$. Observe that it is common to two situations. There will be two possible regions of convergence $Re(s) > -2$ and $Re(s) < -2$. \\
+For ROC $Re(s) > -2$, \\
+The inverse Laplace transform of the expression is $e^{-2t}u(t)$ which is a decaying exponential starting from 1 at $t = 0$ and tends to 0 at $t = \infty$.\\
+For ROC $Re(s) < -2$, \\
+The inverse Laplace transform of the expression is $-e^{-2t}u(-t)$ which is a growing exponential starting from -1 at $t = 0$ and tends to $-\infty$ at $t = - \infty$. 
+\paragraph*{ }
+
+For stability we will want to have the absolute integral of the impulse response existing,
+\[
+	 \int_{0}^{\infty}{|h(t)|dt} < \infty
+\]
+For $Re(s) < -2$, \\
+The absolute integral is $
+	 \int_{0}^{\infty}{|e^{-2t}u(t)|dt}$
+which converges thus it is a stable system. \\
+However for $Re(s) < -2$, \\
+The absolute integral is $
+	 \int_{0}^{\infty}{|-e^{-2t}u(-t)|dt}$
+which diverges and hence it is an unstable system. \\
+
+Though we have taken the same expression for the impulse response
+but we had two different conclusions for stability because of the different regions of convergence which clearly indicates the importance of region of convergence.
+
+\subsection{Poles and the Region of Convergence}
+We need to analyse the reason behind the two different conclusions in regard to stability for the same impulse function. Poles play an important role in determining the stability of the system. For a rational system, to define the regions of convergence, we just need to draw vertical lines on these poles and the regions in between these vertical lines are the possible regions of convergence.
+
+In the above example we have just one pole so we either go to the left of the pole or to the right. In general, even for multiple poles, the region of convergence lies only to the left of the pole or to the right but not on the pole. This is also true for multiple poles.
+
+If we focus on a given pole, we get a left-sided "polyex" term for region of convergence to the left and similarly a corresponding right-sided "polyex" term. The term "polyex" is emphasized because we can have repeated poles.
+
+\subsection{Analytic Explanation}
+Lets consider the influence of only one pole on stability of a system. As we had seen earlier, for stability we need to have the impulse function to be absolutely integrable. For a rational system $H(s)$, $h(t)$ is sum of polyex terms one corresponding to each distinct pole and possibly "singularity function". The rational function $H(s)$ can be written in numerator and denominator form as,
+\[
+H(s) = \frac{N(s)}{D(s)}
+\]
+\[
+ = Quo(s) + \frac{Rem(s)}{1 + \tilde{D}(s)}
+\]
+where $Quo(s)$ is the quotient polynomial and $Rem(s)$ is the remainder polynomial when $N(s)$ is divided by $D(s)$. Both $N(s)$ and $D(s)$ can be expressed as a finite polynomial series in s.   
+$\tilde{D}(s)$ is the denominator when the constant term in the denominator is 1, i.e.there is a constant term.
+
+Now the degree of the remainder polynomial will be less than the degree of denominator. If the numerator degree is greater than the denominator degree. That is if the quotient is a polynomial of degree other than 0, it means there are differentiators or integrators present. There is a differentiation or double differentiation operation present in the system. The moment we have a double differentiation operation, instability is implicit. If the degree$(Quo(s)) \geq 1$, the system is immediately unstable.
+
+This was just the beginning of stability check when we can conclude about stability even without evaluating the remainder. 
+section{Effect of Differentiator and Integrator}
+Suppose we have a system function and then we do a long division upon it and write it in the form of quotient remainder and denominator. If the quotient part of system functions includes differentiator or integrator, there is immediate instability in the system.
+
+Let us see why differentiator and integrator are inherently unstable. We will prove this by counterexample. Consider a differentior such that $y(t)$ is the output for input $x(t)$.
+\begin{center}
+$x(t) \xrightarrow{\ y(t)= \frac{dx(t)}{dt}\ } y(t)\  $.  \\
+\end{center}
+Assume that $x(t)$ = $sin(t^{2})$. The output $y(t)$ of the system is equal to $2tcos(t^{2})$. We note that |$x(t)$| is less than one for all possible $t$. But in contrast |$y(t)$| grows without bound in $t$. Thus a bounded input produced an unbounded output and hence this system is unstable.
+
+Let us look a similar proof for integrator why they are inherently unstable. Consider a running integrator such that $y(t)$ is the output for input $x(t)$.
+\begin{center}
+$x(t) \xrightarrow{\ y(t)= \int_{-\infty}^{t}{x(\lambda)d\lambda} \ } y(t)\  $.  \\
+\end{center}
+Assume that $x(t)$ is the unit step function $u(t)$. The output $y(t)$ turns out to be  $tu(t)$. We note that $x(t)$ is a bounded input whereas output $y(t)$ is unbounded. Thus a bounded input produced an unbounded output and hence this system is unstable.
+
+\subsection{System function of Differentiator and Integrator}
+The system function of diffrentiator is $s$. The system function of running integrator is $\frac{1}{s}$. We can also have cascaded differentiator or integrator. Suppose if two differentiator are cascaded then the corresponding system function is $s^2$. Similarly if two integrator are cascaded then the corresponding system function is $\frac{1}{s^2}$. These type of cascaded systems can be immediately ruled out as unstable system. 
+
+\subsection{Further analysis of System Stability}
+Let us assume that system does not have differentiator or integrator and look at the non-trivial case. This assumption implies that degree of numerator is less than that of denominator. We can decompose such a system function into partial function. We can invert each partial fraction term, corresponding to each distinct pole. We do not call repeated pole as distinct pole. We can club all the terms corresponding to a given pole and create a polyex term. The exponential parameter comes from the pole whereas polynomial parameters come from the coefficients in the partial function.
+
+Now we will look at any particular polyex term. The region of convergence is either to the left of the pole or right of the pole.  From left sided term we cannot infer that it is growing or decaying. Growth and decay depends upon the real part of the exponential term.  
+
+Focus on one of the polyex term.
+
+$Lemma:$ The absolute integral of this polyex term diverges if the exponential is growing and converges if the exponential is decaying.
+
+The polynomial term has no role in this. So, it does not matter if the pole is repeated. We have to only consider if the pole contributes to a growing exponential or decaying exponential. 
+
+Now suppose if we have a growing exponential coming from one of the polyex term. Is it possible that one of the other polyex term can overcome that growth such that the overall impulse response of the system is in control. But this is not possible.
+
+$Lemma:$ The polyex are linearly independent.
+
+One exponentially growing polyex term makes the system impulse response non-integrable and unstable. A polyex term would be exponential if one of these holds.
+
+The pole is of positive real part and the ROC is to the right of the pole, or 
+
+The pole is negative of real part and the ROC is to the left of the pole.
+
+Suppose if a pole is to the right of the imaginary axis, the region of convergence should be in the left and if a pole is to the left of the imaginary axis, the region of convergence should be in the right for the system stability. In either of the case imaginary axis is included in the region of the convergence for stability. So the gist is, look at the imaginary axis and if it is included in the region of convergence the system is stable. 
+
+\subsection{Conclusion}
+In this lecture, we looked at the importance of Radius of Convergence in determining the stability of a system and the various conditions associated with it. We also considered a rational impulse response with finite polynomials of numerator and denominator to chalk out some conditions for stability with regard to them. In the next session, we will look into the conditions of stability or instability if we are not successful in concluding directly.
+
+Next, we looked how differentiators and integrator affects system stability. We considered non-trivial cases of system function and commented upon their stability.  We also looked at the importance of imaginary axis while determining system stability.
+
+
+
+
+
+
+
+
+                
+
+
+
+                     

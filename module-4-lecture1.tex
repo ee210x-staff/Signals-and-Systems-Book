@@ -1,0 +1,74 @@
+\section{Module 4: Lecture 1\\Introduction to Z Transform}
+
+
+\subsection{Introduction}
+We shifted from natural domain to frequency domain to analyse more clearly what system does to a signal. However, in the previous module, we considered only those \textit{stable functions} whose Fourier transform exists. We need to generalise the results obtained from the Fourier domain analysis to a more general domain.
+In this module we will be studying the following things:
+\begin{enumerate}
+\item Generalising the Fourier transform to accommodate systems whose impulse response do not have a Fourier transform. For example,
+\[
+\text{Continuous time domain example: } h(t) = e^{t}u(t)
+\]
+\[
+\text{Discrete time domain example: } h(t) = 2^{n}u[n]
+\]
+We know that $\sum_{n=0}^{\infty}\ 2^{n}$ is divergent which makes the system unstable. The above two examples of unstable system have no frequency response.
+\item Generalising the properties of Fourier Transform to a more general context, like,
+\begin{itemize}
+\item Convolution
+\item Shift Invariance
+\item Differentiation
+\item Modulation
+\end{itemize}
+\item Characterizing the system more generally to deal with more general classes of inputs in an elegant manner.\\
+We require a more general transformation framework which can basically capture the source of instability of the signal and then apply the Fourier transform on the modified function.\\
+For example, $h(t) = e^{t}u(t)$ is an unstable function with no Fourier transform because of exponential growth of $e^{t}$. We can capture this source of instability by multiplying the function by a decaying exponential stronger than the growing one. 
+That is, $h(t)e^{-\sigma t}$  for $\sigma \geq 1$ results in $h(t)e^{-\sigma t} = e^{(1-\sigma)t}u(t)$, which is absolutely integrable.
+\end{enumerate}
+For a continuous independent variable, this whole process is known as the \textit{Laplace transform}, and for a discrete independent variable, it is called the \textit{Z transform}.
+
+\subsection{Introduction of the Z Transform}
+The process of capturing or holding down a unstable discrete time independent signal, and then taking its discrete time Fourier transform is what taking a Z transform entails.
+For example, consider $x[n] = 2^n u[n]$, i.e.
+\[ x[n] = 2^n	\enspace	\text{for}	 n \geq 0 \]
+\[ x[n] = 0	\enspace  \text{for} n<0 \]  
+Clearly this sequence doesn't have a discrete time Fourier transform. We can capture the growth of this signal by multiplying $x[n]$ by $r^{-n}$. The modified sequence is $2^{n}r^{-n}$, where $r$ is a \textit{capturing factor}. For a discrete time Fourier Transform of $x[n]r^{-n}$ to exist, $\sum_{n=0}^{\infty}\ x[n]r^{-n}e^{-jwn}$ should be finite.
+Here,
+\[ \sum_{n=0}^{\infty}\ x[n]r^{-n}e^{-jwn} = \sum_{n=0}^{\infty}\ ({2r^{-1}e^{-jw}})^{n} \]
+For this geometric series to converge, the common ratio $(2r^{-1}e^{-jw})$ has to be less than $1$. i.e. we have,
+\[ |2r^{-1}e^{-jw}| < 1 \]
+\[ \implies |2r^{-1}| < 1 \]
+\[ \implies |r| > 2 \]
+We can also write z = $re^{-jw}$, where z is a complex number. Hence, $|r|>2 \implies |z|>2$ which can be represented in the complex plane by the region exterior to the circle $|z|=2$.\\
+This region exterior to the circle, where the sequence converges, is called the \emph{region of convergence}. Hence, now we have a more general transform on the sequences. We call this the Z transform of the sequence.
+\[  X(z) = \sum_{n=0}^{\infty}\ x[n]z^{-n} \]
+In the above example,
+\[  X(z)\ = \sum_{n=0}^{\infty}\ ({2r^{-1}e^{-jw}})^{n} = \sum_{n=0}^{\infty}\ 2^{n}z^{-n} \]
+Therefore,
+\[ X(z) = \frac{1}{1-2z^{-1}} \] is the Z - Transform of $x[n]$, provided $|z|>2$.
+To state the Z transform, we need to specify both the expression \emph{and} the region of convergence of the expression.\\
+To illustrate this, consider, 
+\[ x[n] = -(2)^n	\enspace	\text{for} n \leq 1 \]
+\[ x[n] = 0 \enspace \text{elsewhere} \]
+Now, the Z Transform X(z) is given by,
+\[ X_1(z) = \sum_{n=-\infty}^{1}\ -2^{n}z^{-n} = 2^{-1}z^{1} + 2^{-2}z^{2} + ...... \]
+It is a geometric series with common ratio $2^{-1}z$. For this series to converge, the common ratio has to be less than $1$, i.e. we have,
+\[ |2^{-1}z| < 1 \]
+which implies
+\[ |z| < 2 \]
+Therefore, we have 
+\[ X_1(z) = -\frac{2^{-1}z}{1-2^{-1}{z}} = -\frac{-1}{2z^{-1}-1} = \frac{1}{1-2z^{-1}} \]
+with the Region of Convergence $|z|<2$.
+Clearly we can see that $X(z)$ and $X_1(z)$ have the \emph{same} expression but \emph{different} Regions of Convergence. This explains the importance of Region of Convergence in Z Transform.
+
+
+
+
+
+
+
+                
+
+
+
+                     

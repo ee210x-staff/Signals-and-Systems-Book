@@ -1,0 +1,228 @@
+\section{Module 4: Lecture 4\\Properties of Laplace and Z Transforms}
+
+
+\subsection{Introduction}
+In the previous lectures you were introduced to Laplace transforms and z-transforms. In this lecture, we will discuss some important properties of these transforms, like the linearity, shifting and modulation property.\\
+Also, throughout the subsequent lectures we will follow the convention that $x(t)$ has the Laplace transform $X(s)$, in the region of convergence $R_X$. And this relation is shown by
+\[
+x(t) \xrightarrow{\ \mathcal{L}\ } X(s)\ ,\ R_X
+\]Similarly for the input $x[n]$ and its z-transform $X(z)$, in the region of convergence $R_X$, we write
+\[
+x[n] \xrightarrow{\ z\ } X(z)\ ,\ R_X
+\]
+
+\subsection{Linearity}
+\subsubsection{Laplace Transform}
+\subsubsection{Property}
+The linearity property of the Laplace transform states that if,
+
+\[
+x_1(t) \xrightarrow{\ \mathcal{L}\ } X_1(s)\ ,\ R_{X_1}
+\]\[
+x_2(t) \xrightarrow{\ \mathcal{L}\ } X_2(s)\ ,\ R_{X_2}
+\]
+then the following property holds,
+\[
+\alpha x_1(t) + \beta x_2(t) \xrightarrow{\ \mathcal{L}\ } \alpha X_1(s) + \beta X_2(s) \ ,\ R_X  \supseteq R_{X_1} \cap R_{X_2}
+\]
+
+\subsubsection{Proof}
+For input $x(t) = \alpha x_1(t) + \beta x_2(t)$, we have 
+\begin{align*}
+X(s) &= \int_{-\infty}^{\infty}{(\alpha x_1(t) + \beta x_2(t))e^{-st}dt}
+\\
+&= \alpha \int_{-\infty}^{\infty}{ x_1(t)e^{-st}dt} + \beta \int_{-\infty}^{\infty}{x_2(t)e^{-st}dt}\\
+&= \alpha X_1(s) + \beta X_2(s)
+\end{align*}
+Now, in the region given by $R_{X_1} \cap R_{X_2}$, we are assured that both the integrals are convergent, and hence $X(s)$ is convergent. However, we can see that $s$ outside this region might also make $X(s)$ converge. Try the following example, to understand this case.
+\begin{align*}
+	x_1(t) &= e^{2t}u(t) + e^{3t}u(t)\\
+	x_2(t) &= e^{2t}u(t) - e^{3t}u(t)\\
+	x(t) &= x_1(t) + x_2(t)
+\end{align*}
+You can clearly see that the regions of convergence for $X_1(s)$ and $X_2(s)$ is $Re(s) > 3$, but that of $X(s)$ is $Re(s) > 2$, which is a super-set of the intersection of the 2 regions.
+\subsubsection{Z-Transform}
+\subsubsection{Property}
+A similar property and proof can be constructed for the z-transform. The linearity property of the z-transform states that if,
+\[
+x_1[n] \xrightarrow{\ z\ } X_1(z)\ ,\ R_{X_1}
+\]\[
+x_2[n] \xrightarrow{\ z\ } X_2(z)\ ,\ R_{X_2}
+\]
+then the following property holds,
+\[
+\alpha x_1[n] + \beta x_2[n] \xrightarrow{\ z\ } \alpha X_1(z) + \beta X_2(z) \ ,\ R_X  \supseteq R_{X_1} \cap R_{X_2}
+\]
+\subsubsection{Proof}
+For the input $x[n] = \alpha x_1[n] + \beta x_2[n]$
+\begin{align*}
+X(z) &= \sum_{n=-\infty}^{\infty}{(\alpha x_1[n] + \beta x_2[n])z^{-n}}\\
+&= \alpha \sum_{n=-\infty}^{\infty}{x_1[n]z^{-n}} + 
+\beta \sum_{n=-\infty}^{\infty}{x_2[n]z^{-n}}\\
+&= \alpha X_1(z) + \beta X_2(z)
+\end{align*}
+Once again, in the region given by $R_{X_1} \cap R_{X_2}$, we are assured that both the summations are convergent, and hence $X(z)$ is convergent. However, you can construct examples where $z$ outside this region might also make $X(z)$ converge. 
+
+
+\subsection{Shifting of Independent Variable}
+\subsubsection{Laplace Transform}
+\subsubsection{Property}
+The shifting property of the Laplace transform states that if,
+\[
+x(t) \xrightarrow{\ \mathcal{L}\ } X(s)\ ,\ R_{X}
+\]
+then the following property holds,
+\[
+x(t - t_0) \xrightarrow{\ \mathcal{L}\ } e^{-st_0}X(s)\ ,\ {R'}_{X} 
+\]
+where ${R'}_X$ is same as $R_X$ except possibly for the extreme contours, $Re(s) \rightarrow \infty$ or $Re(s) \rightarrow -\infty$.
+\subsubsection{Proof}
+\[
+X'(s) = \int_{-\infty}^{\infty}{x(t-t_0)e^{-st}dt}
+\]
+replacing $t-t_0$ with $\lambda$, and making corresponding transformation in integral,
+\[
+X'(s) = \int_{-\infty}^{\infty}{x(\lambda)e^{-s(\lambda + t_0)}d\lambda}
+\]
+\[
+X'(s) = e^{-st_0}X(s)
+\]
+The region of convergence remains same, except for the extreme contours due to the multiplication of the $e^{-st_0}$ term. The transform might not be defined or now become infinite for the extreme contours.
+\subsubsection{Example}
+You can see this property in action in the following example.
+\[\delta(t) \xrightarrow{\ \mathcal{L}\ } 1 , entire\ s\ plane
+\]
+Now, for the input 
+\[
+\delta(t-1) \xrightarrow{\ \mathcal{L}\ } e^{-s} , {R'}_X
+\]
+where ${R'}_X$ is the entire s-plane excluding $Re(s) \rightarrow -\infty$, because the term $e^{-s}$ becomes unbounded for $Re(s) \rightarrow - \infty$. You can try proving similar results for the input $\delta(t+1)$.
+\subsubsection{Z-Transform}
+\subsubsection{Property}
+The shifting property of the z-transform states that if,
+\[
+x[n] \xrightarrow{\ z\ } X(z)\ ,\ R_{X}
+\]
+then the following property holds,
+\[
+x[n - n_0] \xrightarrow{\ z\ }z^{-n_0}X(z)\ ,\ {R'}_{X}
+\]
+where ${R'}_X$ is same as $R_X$ except possibly for the extreme contours, $|z| \rightarrow 0$ or $|z| \rightarrow \infty$.
+\subsubsection{Proof}
+\[
+X'(z) = \sum_{n=-\infty}^{\infty}{x[n-n_0]z^{-n}}
+\]
+Now, replacing $n-n_0$ with $m$ and transforming the summation
+\[
+X'(z) = \sum_{m=-\infty}^{\infty}{x[m]z^{-(m+n_0)}}
+\]\[
+X'(z) = z^{-n_0}X(z)
+\]
+Once again, we can argue that due to the term $z^{-n_0}$ the extreme contours may be effected.
+\subsection{Modulation Property}
+Modulation refers to multiplying with fixed signal or sequence. Hence, here we will try to find the Laplace transform and z-transform for modulated signals.
+\subsubsection{Laplace Transform}
+\subsubsection{Property}
+The modulation property of the Laplace transform states that if,
+\[
+x(t) \xrightarrow{\ \mathcal{L}\ } X(s)\ ,\ R_{X}
+\]
+then the following property holds,
+\[
+e^{at}x(t) \xrightarrow{\ \mathcal{L}\ } X(s - a)\ ,\ {R'}_{X} 
+\]
+where $a$ is a complex constant and ${R'}_X$ is such that $(s-a)$ belongs to $R_X$.
+\subsubsection{Proof}
+\begin{align*}
+X'(s) &= \int_{-\infty}^{\infty}{e^{at}x(t)e^{-st}dt}\\
+&= \int_{-\infty}^{\infty}{x(t)e^{-(s-a)t}dt}\\
+&= X(s-a)
+\end{align*}
+The region of convergence of $X'(s)$ is the same as that of $X(s-a)$. Hence it is the same as $(s-a)$ lying in $R_X$.
+\subsubsection{Example}
+For the input $x(t) = e^{2t}u(t)$ and $a = 3$,
+\[
+	e^{3t}x(t) \xrightarrow{\ \mathcal{L}\ } \frac{1}{(s-3) - 2} = \frac{1}{s - 5}
+\]\[
+	R'_X = Re(s-3) > 2 = Re(s) > 5
+\]
+solving directly, $x'(t) = e^{3t}e^{2t}u(t) = e^{5t}u(t)$, for which 
+\[
+	e^{5t}u(t) \xrightarrow{\ \mathcal{L}\ } \frac{1}{s-5} , Re(s) > 5
+\]
+which is what we got from the property.
+
+\subsubsection{Z-Transform}
+\subsubsection{Property}
+The modulation property of the z-transform states that if,
+\[
+x[n] \xrightarrow{\ z\ } X(z)\ ,\ R_{X}
+\]
+then the following property holds,
+\[
+{\alpha}^nx[n] \xrightarrow{\ z\ } X(\frac{z}{\alpha})\ ,\ {R'}_{X} 
+\]
+where $\alpha$ is a complex constant and ${R'}_X$ is such that $\frac{z}{\alpha}$ belongs to $R_X$.
+
+\subsubsection{Proof}
+\begin{align*}
+X'(z) &= \sum_{n=-\infty}^{\infty}{\alpha^n x[n]z^{-n}}\\
+& = \sum_{n=-\infty}^{\infty}{x[n]{(\frac{z}{\alpha})}^{-n}}\\
+&= X(\frac{z}{\alpha})
+\end{align*}
+Once again, the region of convergence of $X'(z)$ is the same as that of $X(\frac{z}{\alpha})$. Hence it is the same as $\frac{z}{a}$ lying in $R_X$.
+\subsubsection{Exercise}
+For the input $x[n] = 2^nu[n]$ and $\alpha = \frac{1}{3}$, try proving that the modulated sequence has the z-transform $\frac{1}{1 - \frac{2}{3}z^{-1}}$, and region of convergence $|z| > \frac{2}{3}$, using the modulation property.
+
+\subsection{Introduction To Convolution Property}
+Here we will be introducing the convolution property of Laplace transforms. In the subsequent lecture, we will be discussing this in more detail and completeness and extend it to sequences and z-transform. \\
+
+\subsubsection{Laplace Transforms}
+\subsubsection{Property}
+For the signals $x(t)$ and $h(t)$ say,
+\[
+x(t) \xrightarrow{\ \mathcal{L}\ } X(s)\ ,\ R_X
+\]\[
+h(t) \xrightarrow{\ \mathcal{L}\ } H(s)\ ,\ R_H
+\]
+The convolution property states that for the input $y(t) = x(t) \ast h(t)$, the Laplace transform is given by
+\[
+	Y(s) = X(s)H(s)  , R_Y
+\]
+
+\subsubsection{Proof}
+\[
+Y(S) = \int_{-\infty}^{\infty}
+			{[\int_{-\infty}^{\infty}{x(\tau)h(t-\tau)d\tau}
+			]e^{-st}dt}
+\]
+\[
+Y(S) = \int_{-\infty}^{\infty}
+			{\int_{-\infty}^{\infty}{x(\tau)h(t-\tau)
+			e^{-st}d\tau}dt}
+\]
+Now, replace $t - \tau$ with $\lambda$  for fixed $\tau$.
+\begin{align*}
+Y(S) &= \int_{-\infty}^{\infty}
+			{\int_{-\infty}^{\infty}{x(\tau)h(\lambda)
+			e^{-s(\lambda+\tau)}d\tau}d\lambda}\\
+&= [\int_{-\infty}^{\infty}{x(\tau)e^{-s\tau}d\tau}]
+		[\int_{-\infty}^{\infty}{h(\lambda)e^{-s\lambda}d\lambda}]\\
+&= X(s)H(s)
+\end{align*}
+
+\subsection{Conclusion}
+In this lecture you were introduced to linearity, shifting, modulation and convolution properties. We will further carry on the discussion on the convolution property in the subsequent lectures.
+
+
+
+
+
+
+
+
+                
+
+
+
+                     

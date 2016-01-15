@@ -1,0 +1,190 @@
+\section{Module 2: Lecture 9\\Multiplication Theorem and Parseval's Theorem}
+
+
+\subsection{Introduction}
+We have seen in the last few sessions, the property of duality and the convolution – multiplication parallel. We will now see the implications of duality, deriving what we call ‘Multiplication theorem’ and then its application called the ‘Parseval’s theorem’.
+
+\subsection{Multiplication}
+Let us take $x_1(t)$ and $x_2(t)$ with Fourier transforms $X_1(\Omega)$ and $X_2(\Omega)$ respectively. We derived earlier the Fourier transform of $x_1(t) \ast x_2(t)$ to be $X_1(\Omega)X_2(\Omega)$. We shall now try to find a general expression for the Fourier transform of the product $x_1(t)x_2(t)$.
+\\
+We have,            
+\begin{equation}
+x_1(t)\xrightarrow{\mathcal{F}} X_1(\Omega)
+\end{equation}
+\begin{equation}
+x_2(t) \xrightarrow{\mathcal{F}} X_2(\Omega)
+\end{equation}
+\begin{equation}
+x_1(t) \ast x_2(t)\xrightarrow{\mathcal{F}} X_1(\Omega)X_2(\Omega)
+\end{equation}
+
+Applying duality on (3) gives
+\[
+X_1(t)X_2(t)
+\xrightarrow{\mathcal{F}}
+2\pi (x1 \ast x2)(-\Omega)
+\]
+Also by duality,
+
+\[
+X_1(t)
+\xrightarrow{\mathcal{F}}
+2 \pi x_1(-\Omega)
+\]
+\[
+X_2(t)
+\xrightarrow{\mathcal{F}}
+2 \pi x_2(-\Omega)
+\]
+
+$2\pi x_1(-\Omega) \ast x_2(-\Omega)$, which is the Fourier transform of $X_1(t)X_2(t)$, can be re-written as,
+\[
+\frac{1}{2\pi} ( 2\pi x_1(-\Omega) * 2\pi x_2(-\Omega) )
+\]
+Notice that $2\pi x_1(-\Omega)$ is the Fourier transform of $X_1(t)$ and $2\pi x_2(-\Omega)$ is the Fourier transform of $X_2(t)$.
+Therefore we can see that the Fourier transform of the product $X_1(t)X_2(t)$ is the convolution of Fourier transforms of the individual time domain functions multiplied by a factor of $\frac{1}{2\pi}$. 
+
+\subsubsection*{Theorem}
+If 
+\[
+y_1(t)
+\xrightarrow{\mathcal{F}} Y_1(\Omega)
+\]
+\[
+y_2(t)
+\xrightarrow{\mathcal{F}}
+Y_2(\Omega)
+\]
+Then the Fourier transform the product (provided all the Fourier transforms exist) is,
+\begin{equation}
+y_1(t)y_2(t) 
+\xrightarrow{\mathcal{F}}
+\frac{1}{2\pi} 
+( Y_1(\Omega) \ast Y_2(\Omega) )
+\end{equation}
+Multiplication of one signal by another can be thought of as using one signal to scale or modulate the amplitude of the other, and consequently, the multiplication of two signals is often referred to as 'amplitude modulation'. For this reason, (4) is sometimes referred to as the modulation property.
+
+
+\subsubsection*{Special Case of Multiplication Theorem}
+We have seen from the multiplication theorem, if $y_1(t)$ and $y_2(t)$ have the following Fourier transforms, 
+
+\[
+y_1(t)
+\xrightarrow{\mathcal{F}}
+Y_1(\Omega)
+\]\[
+y_2(t)
+\xrightarrow{\mathcal{F}}
+Y_2(\Omega)
+\]
+then
+\[
+y_1(t) y_2(t) 
+\xrightarrow{\mathcal{F}}
+\frac{1}{2\pi}
+{ Y_1(\Omega) \ast Y_2(\Omega) }
+\]
+Let us find the Fourier transform of $y_1(t)\overline{y_2(t)}$:
+We will first find out the Fourier transform of $\overline{y_2(t)}$ and then get the Fourier transform of $y_1(t)$ in two different ways:\begin{enumerate}
+\item Using the multiplication theorem.
+\item By the general definition of Fourier transform of any given function.
+\end{enumerate}
+First, the Fourier transform of  $\overline{y_2(t)}$:
+The inverse Fourier transform of a given function $X(\Omega)$ is given by 
+\[
+x(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{ X(\Omega) 
+e^{j \Omega t}d\Omega }
+\]
+Taking the complex conjugate of the above,
+\[	
+\overline{x(t)} = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\overline{X(\Omega)}e^{-j \Omega t}d\Omega }
+\]  
+Transforming $\Omega$ with $-\alpha$,
+\begin{equation}
+\overline{x(t)} = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\overline{X(-\alpha)}e^{j \alpha t}d\alpha }
+\end{equation}
+From equation (5) we can observe that the Fourier transform of  $\overline{x(t)}$ is $\overline{X(-\alpha)}$.
+Therefore 
+\[
+\overline{y_2(t)}
+\xrightarrow{\mathcal{F}}
+\overline{Y_2(-\Omega)}
+\]
+\noindent
+From multiplication theorem, we can get the Fourier transform of the product $y_1(t)\overline{y_2(t)}$
+\[
+y_1(t)\overline{y_2(t)}
+\xrightarrow{\mathcal{F}}
+\frac{1}{2\pi} { 
+Y_1(\Omega) 
+\ast 
+\overline{Y_2(-\Omega)}}\]
+We can also obtain the Fourier transform using the general definition, i.e
+\[
+y_1(t)\overline{y_2(t)} \xrightarrow{\mathcal{F}}
+\int_{-\infty}^{\infty}
+{ y_1(t)\overline{y_2(t)} e^{-j\Omega t}dt }
+\]
+
+The Fourier transforms of $y_1(t)\overline{y_2(t)}$  obtained by either method should be identical, and hence we can write,
+\[
+\frac{1}{2\pi} { Y_1(\Omega)
+ \ast \overline{Y_2(-\Omega)}} = 
+\int_{-\infty}^{\infty}
+{ y_1(t)\overline{y_2(t)} e^{-j\Omega t}dt }
+\]
+
+\[
+\frac{1}{2\pi}
+\int_{-\infty}^{\infty} \!
+{Y_1(\Omega - \lambda)\overline{Y_2(-\lambda)}\ \mathrm{d}\lambda}
+= 
+\int_{-\infty}^{\infty}
+{ y_1(t)\overline{y_2(t)} e^{-j\Omega t}dt }
+\]
+
+In the above equation, put $\Omega  =0$, the identity becomes
+\[
+\frac{1}{2\pi}
+\int_{-\infty}^{\infty}
+{Y_1(-\lambda)\overline{Y_2(-\lambda)}d\lambda}
+= 
+\int_{-\infty}^{\infty}
+{ y_1(t)\overline{y_2(t)}dt }
+\]
+
+In the left hand side integral above, transform using $-\lambda \rightarrow \beta$, then
+$d\lambda \rightarrow -d\beta$, and as $\lambda$ goes from $-\infty$ to $+\infty$, $\beta$ goes from $+\infty$ to $-\infty$. 
+The equation becomes
+\[
+\frac{1}{2\pi} 
+\int_{-\infty}^{\infty}
+{ Y_1(\beta) 
+\overline{Y_2(\beta)} d\beta } = \int_{-\infty}^{\infty}
+{ y_1(t) \overline{y_2(t)}  dt } 
+\]
+
+Observe that the right hand side is essentially the inner product of $y_1(t)$ and $y_2(t)$  and the left hand side is the inner product of $Y_1(\Omega)$ and   $Y_2(\Omega)$ multiplied by a factor of $\frac{1}{2\pi}$.  Essentially, arrived at an equivalence between inner products in time domain and inner product in frequency domain. This is called the Parseval's theorem. 
+
+\subsubsection*{Theorem}
+If $y_1(t)$ and $y_2(t)$ have respectively their Fourier transforms $Y_1(\Omega)$ and $Y_2(\Omega)$, then the inner product of $y_1(t)$ and $y_2(t)$ is $\frac{1}{2\pi}$ times the inner product of $Y_1(\Omega)$ and $Y_2(\Omega)$
+\[
+\int_{-\infty}^{\infty}
+{ y_1(t) \overline{y_2(t)} dt }  = \frac{1}{2\pi} 
+\int_{-\infty}^{\infty}
+{ Y_1(\Omega) \overline{Y_2(\Omega)} d\Omega }
+\]
+
+
+
+
+
+
+
+
+
+                
+
+
+
+                     

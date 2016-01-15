@@ -9,13 +9,21 @@
 \usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{graphicx}
+%\usepackage{indentfirst}
+\usepackage{subcaption}
 %\usepackage{fancyhdr}
 \usepackage{textcomp}
 \usepackage{comment}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{cancel}
 \usepackage[framemethod=tikz]{mdframed}
+\usepackage{hyperref}
 % \usepackage[pdftex,
 %             pdfauthor={Prof. Vikram M. Gadre},
-%             pdftitle={EE210.1X Lecture Notes},
+%             pdftitle={EE210X Book},
 %             pdfsubject={Signals and Systems}]{hyperref}
 % \pagestyle{fancy}
 % \lhead{IITBombayX}
@@ -98,8 +106,38 @@ and \mbox{Donald E.~Knuth}.
 % r.9 introduction
 \cleardoublepage
 \mainmatter
-
 \part{Frequency Domain}
-\include{module-2-chapter-1}
+\chapter{Sinusoids and LSI Systems}
+\input{module-2-lecture-1.tex}
+\input{module-2-lecture-2.tex}
+\input{module-2-lecture-3.tex}
+\input{module-2-lecture-4.tex}
+\input{module-2-lecture-5.tex}
+\chapter{The Fourier Transform}
+\input{module-2-lecture-6.tex}
+\input{module-2-lecture-7.tex}
+\input{module-2-lecture-8.tex}
+\input{module-2-lecture-9.tex}
+\input{module-2-lecture-10.tex}
+
+\part{Sampling}
+\chapter{chapter}
+\input{module-3-lecture-1-introduction.tex}
+\input{module-3-lecture-2-uniqueness.tex}
+\input{module-3-lecture-3-concept.tex}
+\input{module-3-lecture-4-understanding.tex}
+\input{module-3-lecture-5-sampling.tex}
+\input{module-3-lecture-6-sampling.tex}
+\input{module-3-lecture-7-reconstructor.tex}
+\input{module-3-lecture-8-reconstructor.tex}
+\input{module-3-lecture-9-nonideal.tex}
+\input{module-3-lecture-10-nyquist.tex}
+\input{module-3-lecture-11-sample.tex}
+\input{module-3-lecture-12-sampling.tex}
+\input{module-3-lecture-13-applications.tex}
+\input{module-3-lecture-14-discrete.tex}
+\input{module-3-lecture-15-discrete.tex}
+\input{module-3-lecture-16-conclusion.tex}
+
 
 \end{document}

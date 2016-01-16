@@ -1,9 +1,7 @@
 \section{Module 2: Lecture 2\\Sinusoidal Input to LSI Systems}
 
 
-\subsection{Introduction}
-In this lecture we will learn how to deal with phase changes in sinusoidal signals and pass sinusoidal signals into stable LSI systems in an intelligent and insightful manner. We will look into why we introduced complex signals in our previous analysis and how these tools make the mathematical modelling simple. We then go on to understanding how to deal with signals beyond the domain of sinusoids.
-
+%\subsection{Introduction}
 
 \subsection{Understanding Phase Change In Sinusoids and Phasors}
 If we consider a sinusoid as a combination of two rotating complex numbers, which we will henceforth call phasors, moving in opposite direction, 
@@ -28,15 +26,15 @@ Notice that it is the complex conjugate of the previous multiplying factor we fo
 	2Acos(\Omega t + \phi) \xrightarrow{Phase \ Change} Ae^{j(\Omega t + \phi)}e^{j\Delta\phi} + Ae^{-j(\Omega t + \phi)}e^{-j\Delta\phi}
 \]
 We hence understand that using only one phasor is enough to fully determine the behaviour of the sinusoid. This explains why we used complex signals in our previous analysis, due to their ease in mathematical understanding.\\
-We will now see the result of inputting a sinusoidal signal to a stable linear shift invariant system, with impulse response h(t) (Assume that the impulse response is real).\\
-We deal with stable LSI because what we can say from the stability of the system is that y(t) is going to be bounded.\\
+We will now see the result of inputting a sinusoidal signal to a stable linear shift invariant system, with impulse response $h(t)$ (Assume that the impulse response is real).\\
+We deal with stable LSI because what we can say from the stability of the system is that $y(t)$ is going to be bounded.\\
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=10cm]{LSIcos.png}
 \caption{Sinusoidal Input To Stable LSI System}
 \end{center}
 \end{figure}\\
-The direct solution via convolution seems very difficult. In fact if you try to calculate via the convolution integral, we get the following expression.
+The direct solution via convolution seems very difficult. In fact if we try to calculate via the convolution integral, we get the following expression.
 \[
 y(t) = \int_{-\infty}^{+\infty}{h(\lambda)2Acos(\Omega(t-\lambda) + \phi)d\lambda}\]
 We will now see how to solve it using phasors, making the analysis mathematically convenient.
@@ -94,22 +92,26 @@ Also, if we view an input to a stable LSI system as the sum of multiple sinusoid
 
 
 \subsection{Periodic Input to Shift Invariant Systems}
-Periodic inputs can be represented by a linear combination (which can be countably infinite) of sinusoids having frequencies which are multiples of the frequency of the input. This property is referred to as a Fourier Series expansion of the input. \\
-The Fourier Series expansion and our understanding from the previous section gives us a simple method to compute the output of a periodic input in an LSI system as the linear combination of the output of these sinusoids.\\
-First consider the following lemma.\\
+How does an LSI system respond to a general periodic signal? Consider the following lemma.\\
 \textbf{Lemma:} A periodic input to a shift invariant system produces a periodic output.\\
 \textbf{Proof:}\\
 
-Let input x(t) with period T
+Let the input be $x(t)$ with a period $T$
 \[x(t+T) = x(t)\ \ \forall t\]
 \[x(t) \xrightarrow{SI\ system} y(t) \]
 
-Now by shift invariance
+Now, by shift invariance,
 \[x(t+T) \xrightarrow{SI\ system} y(t+T) \]
-\[y(t) = y(t+T)\ \ \forall t \]
-Hence the output is also periodic, infact with the same period T.
+Hence,
+\begin{equation}\label{eqn:PeriodicOutput}
+y(t) = y(t+T)\ \ \forall \ t
+\end{equation}
+Hence the output is also periodic, infact with the same period T.\\
+An important property of a periodic input or a periodic function is that it can be represented by a linear combination (which can be countably infinite) of sinusoids having frequencies which are multiples of the frequency of the input. This property is referred to as a Fourier Series expansion of the input. \\
+The Fourier Series expansion and our understanding from the previous section gives us a simple method to compute the output of a periodic input in an LSI system as the linear combination of the output of these sinusoids.\\
+%% Added paragraph for better flow. Needs verification:
+This result, combined with \ref{eqn:PeriodicOutput} can be used to calculate the output for a general periodic input, but for that, we need still more information. How do we know whether a certain periodic signal can be expressed as a linear combination of sinusoids \emph{uniquely}? To answer this question, we need to invoke some concepts from linear algebra by considering signals as vectors.
 
-
-\subsection{Conclusion}
-In this lecture we understood the analysis of inputting sinusoidal input to a stable LSI system. We saw how we could simplify our analysis by the use of phasors. In the upcoming lecture we will learn about the use of inner product and vector analysis in understanding signals.
+%\subsection{Conclusion}
+%In this lecture we understood the analysis of inputting sinusoidal input to a stable LSI system. We saw how we could simplify our analysis by the use of phasors. In the upcoming lecture we will learn about the use of inner product and vector analysis in understanding signals.
 

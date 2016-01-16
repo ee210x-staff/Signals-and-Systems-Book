@@ -1,6 +1,6 @@
 \section{Module 2: Lecture 1\\Sinusoidal Signals and their Properties}
 
-\subsection{Introduction}
+\subsection*{Introduction}
 In the first module, we have been looking at signals and systems in what is
 called their natural domain. By natural domain, we mean that the independent
 variable of the signal is the same as it was when the signal was
@@ -19,7 +19,10 @@ paradigm, a change of world-view in describing signals and systems.
 We begin by understanding which signals are special from the point of view of
 the signals and systems. Let's visit the ideal voltage generator for that
 purpose.
-\subsubsection{The Ideal Voltage generator}
+%% Adding the Introduction from M2L02 here as of now.
+In this lecture we will learn how to deal with phase changes in sinusoidal signals and pass sinusoidal signals into stable LSI systems in an intelligent and insightful manner. We will look into why we introduced complex signals in our previous analysis and how these tools make the mathematical modelling simple. We then go on to understanding how to deal with signals beyond the domain of sinusoids.
+%% Intro of M2L02 ends here
+\subsection{The Ideal Voltage generator}
 The ideal voltage generator consists of a circular conducting coil rotating in
 a constant magnetic field.
 \begin{figure}[ht]
@@ -33,9 +36,9 @@ rotation be $\omega$ such that $\theta = \omega t$, and the value of the
 constant magnetic field be $B$. Now, by Faraday's law, the electric field $\mathcal{E}$ is defined as
 \[ \mathcal{E}= - \frac{\partial \Phi_B}{\partial t} \]
 where the flux $\Phi_B$ in this case is given by
-\[ \Phi_B = BA \cos (\theta) = BA \cos (\omega t) \]
+\[ \Phi_B = BA \cos \theta = BA \cos \omega t \]
 Hence the electric field will be
-\[ \mathcal{E}= - BA \omega \sin (\omega t) \]
+\[ \mathcal{E}= - BA \ \omega \sin \omega t \]
 This is the principle of generation of the voltage supply that we receive at
 our residences. This is one important reason why the sinusoidal voltage is
 highly favoured and deeply studied. And of course there are many other reasons
@@ -171,4 +174,5 @@ This is the reason why we earlier demanded that our systems should accept a
 complex signal in general.\\
 In a nutshell, dealing with amplitudes is easy but the dealing with phases is
 a problem in sinusoids and that problem is overcame when you go to the phasor
-instead of the corresponding sinusoid.
+instead of the corresponding sinusoid. Let us see how a general LSI system responds to
+a phasor or sinusoid as an input.

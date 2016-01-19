@@ -9,19 +9,19 @@ domain is a speech signal expressed as a function of time, as time is the
 naturally associated independent variable with the speech signal. \\
 For processing signals, we need appropriate systems. Now, what processing needs to be done by the system can be a tricky thing to specify in the
 natural domain. \\
-For example, say that we want to separate the voices of male and female
-singers from a chorus. Although it is qualitatively easier to understand, one can't give the description of such a system in the
+For example, say we want to separate the voices of male and female
+singers from an audio recording of a chorus. Although it is qualitatively easier to understand, one can't give the description of such a system in the
 time domain. We need to
 have a broader view of systems, and more importantly, of signals, to be able
 to tackle this problem. \\
 So in this module we are going to take the first step towards a change of
 paradigm, a change of world-view in describing signals and systems.
-We begin by understanding which signals are special from the point of view of
-the signals and systems. Let's visit the ideal voltage generator for that
-purpose.
 %% Adding the Introduction from M2L02 here as of now.
 In this lecture we will learn how to deal with phase changes in sinusoidal signals and pass sinusoidal signals into stable LSI systems in an intelligent and insightful manner. We will look into why we introduced complex signals in our previous analysis and how these tools make the mathematical modelling simple. We then go on to understanding how to deal with signals beyond the domain of sinusoids.
 %% Intro of M2L02 ends here
+We begin by understanding which signals are special from the point of view of
+the signals and systems. Let's visit the ideal voltage generator for that
+purpose.
 \subsection{The Ideal Voltage generator}
 The ideal voltage generator consists of a circular conducting coil rotating in
 a constant magnetic field.
@@ -42,12 +42,14 @@ Hence the electric field will be
 This is the principle of generation of the voltage supply that we receive at
 our residences. This is one important reason why the sinusoidal voltage is
 highly favoured and deeply studied. And of course there are many other reasons
-why. Let us have a look at some other interesting properties of sinusoids.
+why. Let us have a look at some interesting properties of sinusoids.
+%%%
+%%%
 \subsection{Properties of sinusoids}
 The first interesting thing about sine waves is that when you add two sinusoids
 of the same frequency, it gives you back another sinusoid of the \emph{same}
 frequency. Let's prove this formally.
-Say we have two sinusoids, $x_1 (t)$ and $x_2 (t)$, of the same frequency
+Say we have two sinusoids, $x_1 (t)$ and $x_2 (t)$, of the same angular frequency
 $\Omega,$ given by
 \begin{equation*}
 x_1 (t) = A_1 \cos (\Omega t + \phi_1)
@@ -61,22 +63,22 @@ x (t) = \alpha_1 x_1 (t) + \alpha_2 x_2 (t)
 \end{equation*}
 Note that we can write $x_1$ and $x_2$ as
 \begin{equation*}
-x_1 (t) = A_1  \{ \cos (\Omega t) \cos (\phi_1) - \sin (\Omega t) \sin (\phi_1) \}
+x_1 (t) = A_1  \{ \cos \Omega t \cos \phi_1 - \sin \Omega t \sin \phi_1 \}
 \end{equation*}
 \begin{equation*}
-x_2 (t) = A_2  \{ \cos (\Omega t) \cos (\phi_2) - \sin (\Omega t) \sin (\phi_2) \}
+x_2 (t) = A_2  \{ \cos \Omega t \cos \phi_2 - \sin \Omega t \sin \phi_2 \}
 \end{equation*}
 Hence we can write $x (t)$ as
 \begin{equation*}
-x (t) = [ \alpha_1 A_1 \cos (\phi_1) + \alpha_2 A_2 \cos (\phi_2) ] \cos
-   (\Omega t) + [ - \alpha_1 A_1 \sin (\phi_1) - \alpha_2 A_2 \sin
-   (\phi_2) ] \sin (\Omega t)
+x (t) = [ \alpha_1 A_1 \cos \phi_1 + \alpha_2 A_2 \cos \phi_2 ] \cos
+   \Omega t + [ - \alpha_1 A_1 \sin \phi_1 - \alpha_2 A_2 \sin
+   \phi_2 ] \sin \Omega t
 \end{equation*}
 Writing the two time-independent coefficients as $P$ and $Q$, we get
 \begin{equation*}
- x (t) = P \cos (\Omega t) + Q \sin (\Omega t) = \sqrt{P^2 + Q^2}  \left\{
-   \frac{P}{\sqrt{P^2 + Q^2}} \cos (\Omega t) + \frac{Q}{\sqrt{P^2 + Q^2}}
-   \sin (\Omega t) \right\}
+ x (t) = P \cos \Omega t + Q \sin \Omega t = \sqrt{P^2 + Q^2}  \left\{
+   \frac{P}{\sqrt{P^2 + Q^2}} \cos \Omega t + \frac{Q}{\sqrt{P^2 + Q^2}}
+   \sin \Omega t \right\}
 \end{equation*}
 This can be easily seen to be
 \begin{equation*}
@@ -88,7 +90,7 @@ with
 \end{equation*}
 Hence, linearly combining two sinusoids of the same frequency gives back a
 sinusoid with the same frequency.\\
-Another interesting thing about sinusoids is that when we differentiate a
+Another interesting property is that when we differentiate a
 sine wave, we get back a sinusoid of the same frequency.
 \begin{equation*}
 \frac{d}{d t}  \{ A \cos (\Omega t + \phi) \} = - A \Omega \sin
@@ -111,7 +113,7 @@ given by
 \[ x_1 (t) = A \cos (\Omega t + \phi_1) \]
 and the changed sinusoid is given by
 \[ x_2 (t) = A \cos (\Omega t + \phi_2) \]
-Then, unlike the amplitude case, $x_2 (t) / x_1 (t)$ doesn't turn out to be a
+Unlike the amplitude case, $x_2 (t) / x_1 (t)$ doesn't turn out to be a
 constant independent of time. This will cause a problem while dealing with
 inductors or capacitors. In inductors, for example, the voltage drop is
 proportional to the derivative of the current passing through it. Hence, if a
@@ -151,7 +153,7 @@ Now, the voltage across an inductor is given by
    \phi_0 \}} \]
 Hence we can see that
 \[ V / I = j \Omega L \]
-Hence, now the ratio of the voltage and current for an inductor is a complex
+Now the ratio of the voltage and current for an inductor is a complex
 \textit{constant independent of time}!\\
 Similarly, for the other rotating complex number, we will get $V / I$ again to
 be a constant, but with a minus sign $(- j \Omega L)$. So in some sense the

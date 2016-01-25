@@ -1,0 +1,173 @@
+\section{Lecture 11: Properties of Discrete Systems.}
+
+
+\subsection{Additivity}
+
+\subsubsection{Introduction}
+
+Previously, we were introduced to a new form of systems that is, Discrete Independent Variable Systems. 
+If we recall, we had established a fact that the properties of Discrete Systems are more or less similar to those of the Continuous Systems. In this session, we look at one of the properties of Discrete Systems i.e, Additivity. 
+
+
+
+\subsubsection{Definition}
+Additivity can be defined such that a system is said to be additive if the output corresponding to the sum of any two inputs is the sum of the two outputs.
+
+Thus if we have two inputs to a given system X1[n] and X2[n], the output of the system will be Y[n]=Y1[n]+Y2[n]. This is very much like the continuous time system.
+
+We must note that we are adding the entire signals and not just certain points of the signal. Thus, we are basically adding the entire sequence of signals. We refer to the signals as a sequence since in Discrete Systems, we can talk about a point before and a point after the given point.
+
+\subsubsection{Proving Additivity}
+Note that in order to prove that a given system is additive, we should prove that the system is additive for all the points in the sequence. 
+
+Thus if we add the points X1[n]+X2[n] +…Xn[n] , in order to prove the given system is additive, the output has to be Y[n]=Y1[n]+Y2[n]+…..Yn[n].
+
+$$\sum X[n]  \rightarrow \sum Y[n]$$
+
+However, in order to prove that a given system is not additive, disproving the additivity at even two given points is enough.
+
+
+
+
+\subsubsection{The Tax Example}
+We could now look at the tax example which we had previously seen.
+
+As we know, the tax collected is given by the equation :
+
+$$Y[n] = { \alpha.X[n] +\beta. X[n-1] }$$
+Here $\alpha$ and $\beta$ are the rates of taxation at the given instances.
+
+In order to illustrate the additivity of this taxation system , let us consider two states S1 and S2 having the same tax rules. X1[n] and X2[n] are the populations of the two states in the nth interval respectively. 
+
+Let S be the system that collects the tax. If we consider both the states together, we need to find the tax that is collected together.
+\subsubsection{Proof}
+$$X[n] = {X_1[n] + X_2[n] }$$
+$$Y[n] = { \alpha.X[n] +\beta.X[n-1] }$$
+$$Y[n] = { \alpha.X_1[n] +\alpha.X_2[n]+\beta. X_1[n-1]+\beta.X_2[n-1] }$$
+$$Y[n] = { [{\alpha.X_1[n]+\beta. X_1[n-1]}] +[{\alpha.X_2[n]+\beta.X_2[n-1]}] }$$
+$$Y[n] = {Y_1[n] + Y_2[n] }$$
+The above will be true for any given X1[n] and X2[n].We thus conclude that the above system is additive.
+
+
+\pagebreak
+
+\subsection{Homogeneity and Shift Invariance.}
+
+\subsubsection{Introduction}
+
+We have looked at the Additive property of Discrete Systems previously. Continuing our discussion on properties, we now look at two new properties of Discrete Systems. Namely, Homogeneity and Shift Invariance. 
+
+
+\subsection{Definition}
+The properties of continuous as well as discrete systems seem to be more or less similar. However, there are minor differences in the way we define these properties.
+
+\subsubsection{Homogeneity}
+A Homogeneous system is defined as the one where if the input is scaled by a given constant, the output is also scaled by the same constant.
+
+
+\subsubsection{Shift Invariance}
+Shift Invariant system is defined as the one where if we shift the input by a given amount of time (or given number of samples in this case), the output will be shifted by the same amount of time (or number of samples). 
+
+Note that in discrete systems, we can only shift the input by integral values unlike in continuous systems. 
+
+
+
+
+\subsubsection{A Homogeneous System}
+
+Consider a system with input X[n] , giving an output Y[n]. Now, we must note that in a discrete memory system, we map the whole input sequence on to the output sequence. It is not a point to point mapping which would make it memoryless. 
+
+Thus, when we scale the given input signal by say a constant $\alpha$, for the system to be homogeneous the output will be scaled by the same constant $\alpha$. This is true for every possible input X[n] and every possible constant $\alpha$. 
+
+$$X[n]\rightarrow Y[n]$$
+$${\alpha.X[n]}\rightarrow {\alpha.Y[n]}$$
+
+\subsubsection{Tax example with respect to a Homogeneous System}
+We can now illustrate the tax system example taken a few sessions before. 
+
+If we double the number of people in the state, the tax collected will also be doubled. 
+
+Homogeneity insists that the output will be scaled by ‘the very same’ constant with which we scale the input. 
+
+
+\begin{figure}
+\centering
+
+\end{figure}
+
+
+
+\subsubsection{A Shift Invariant System}
+Consider a discrete system, with an input $X[n]$, producing an output $Y[n]$. 
+
+Now, if we shift the given input by an integer $D$, we have the input as $X[n-D]$. 
+
+For the system to be shift invariant, it should produce an output which will be shifted by the same integer D.
+$$X[n]\rightarrow Y[n]$$
+$$X[n-D]\rightarrow Y[n-D]$$
+Where D $\in$ Integer and the above holds true for every D and every X[n].
+
+\subsubsection{Tax example with respect to a Shift Invariant System}
+Going back to the taxation example, what Shift invariance implies is that the rate of the tax remains the same over several years.
+
+So as we jump by a certain amount of time, the tax or the output Y[n] should continue to remain the same.
+
+
+\todo[inline, color=white]{Note that Shift Invariance demands a lot from the system. Shift Invariant Systems are very rare in real life or are probably non-existent. A system could however be Shift Invariant over a long range of period. }
+
+\pagebreak
+
+\subsection{Causality}
+
+\subsubsection{Introduction}
+
+In our discussion on the Discrete Independent Variable systems, we have so far seen 3 properties. Namely Additivity, Homogeneity and Shift Invariance. We now look at another two properties, Causality and Stability. These discussion on the properties of Discrete Systems help us to understand how they are very much similar to the properties of Continuous Systems in nature. 
+
+\subsubsection{Definition}
+A system is Causal if the output at anytime depends only on the values of the input at the present time and in the past. 
+
+Thus, if two inputs to a Causal System are identical up to some sample n0, the corresponding outputs must also be equal up to this point.
+
+\subsubsection{A Causal System}
+A causal System is also referred to as a non-anticipative system since the system output does not anticipate future values of the input. 
+
+A real life example of a Causal system could be an RC circuit since a capacitor voltage depends only on the present and past values of the source voltage.
+
+Looking at the definiton of a Causal System, we can represent it as follows:
+
+If $$ X_1[n]=X_2[n]$$
+upto $$n \leq n0$$,
+A system is said to be causal if for all $X_1[n]$,$X_2[n]$,$n \leq n0$
+
+$$ Y_1[n]=Y_2[n]$$
+
+
+
+\subsection{Stability}
+
+\subsubsection{Boundedness}
+A bounded input can be defined as an input having a bounded maximum magnitude. If we have an input X[n], magnitude of the input will have a maximum value $Mx$ which will always be (strictly) less than $\infty$. 
+
+The above can be represented as follows:
+$$ X[n] \leq Mx < \infty$$
+
+
+\subsubsection{Definition}
+A system is defined to be Stable if every bounded input to the system results in a bounded output over the interval [$ n_0,\infty $] . 
+
+This must hold for all initial samples. So, as long as we don't input $\infty$ to our system, we won't get $\infty$ output.
+
+
+\subsubsection{A Stable System}
+
+A Stable System is the one for which small inputs lead to responses that do not diverge. 
+The input of a stable system is always bounded.
+An example of a Stable System could be as follows:
+
+$$Y[n]=(\frac{1}{2T+1})\sum_{k=-T}^{T} X[n-k]$$
+
+We can see that as X[n] is a bounded value for all values of n by certain number $\beta$, then the largest possible magnitude of Y[n] will also be $\beta$.
+
+This is because Y[n] is the average of a finite set of values of input. 
+
+We looked at a few important properties of Discrete Independent Variable Systems in this Lecture. 

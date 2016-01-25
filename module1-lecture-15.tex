@@ -1,0 +1,186 @@
+\section{Lecture 15: Introduction to Convolution}
+
+
+
+\subsection{Input Output Relationship in LSI Systems: the Impulse Response}
+We have studied several properties of the systems, both continuous and discrete. One very important concept amongst them is the impulse response for the LSI systems which not only showed us how we can obtain the output from the input for the system, but also the properties of that system. It's a very peculiar relation, which relates the input to the output though. So let us try to study it further: and see how we go about doing that somewhat-complicated looking summation or integral. Here are the expressions, both of summation for the discrete systems and integral for continuous ones, for our reference:\\
+For discrete systems, we'd write:
+\begin{equation}
+y[n]=\sum_{\kappa=-\infty}^{+\infty} x[\kappa]h[n-\kappa] \nonumber
+\end{equation}
+And for continuous systems,
+\begin{equation}
+y(t)=\int_{-\infty}^{+\infty} x(\tau)h(t-\tau)\,d\tau \nonumber
+\end{equation}
+Doesn't it look very similar? The operation we are performing on the input signal $x$ is essentially the same, the only difference is the difference between an integral and a summation, which comes from the nature of the independent variable: whether that variable is discrete or continuous. So lets examine this operation carefully. How do we actually perform it? Let's take the simpler version of the summation first:\\ 
+Consider following $x[n]$:
+\begin{eqnarray*}
+x[n] &=& -1, \quad\, n=-1 \\ 
+&=& 9, \quad\quad n=0\\
+&=& 5, \quad\quad n=1\\
+&=& 3, \quad\quad n=2\\
+&=& 0, \quad\quad otherwise
+\end{eqnarray*}
+and $x[n]$ is zero elsewhere.
+\subsubsection{Arrow Notation for writing $x[n]$ Conveniently}
+We have represented x[n] above, but this way seems a little bit tedious. So we introduce a new neat notation to write finite-length discrete signals, called the arrow notation. We basically write the out all of the values $x[n]$ takes, as $n$ changes, and indicate $n$ corresponding to any one of the values. So we'd write the same signal in arrow notation as:\\
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r r }
+  $x[n] =$ & -1 & 9 & 5 & 3 \\
+   &  & $\uparrow$ &  & \\
+   &  & 0 &  & \\
+\end{tabular}\\
+%\end{table}
+Now instead of zero, it may as well have been any other number. For example,\\
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r r }
+  $x[n] =$ & -1 & 9 & 5 & 3 \\
+   &   $\uparrow$& &  & \\
+   &   -1& &  & \\
+\end{tabular}\\
+%\end{table}
+is an equally valid expression. The output is assumed to be zero everywhere else, at the points which are not shown.
+
+\subsection{Getting the output for a discrete system}
+So, back to our finding the output: we have the $x[n]$:\\
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r r }
+  $x[n] =$ & -1 & 9 & 5 & 3 \\
+   &  & $\uparrow$ &  & \\
+   &  & 0 &  & \\
+\end{tabular}\\
+%\end{table}
+And $h[n]$:\\
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r  }
+  $h[n] =$ & 1 & -1 & 2\\
+     & $\uparrow$ &  & \\
+     & 0 &  & \\
+\end{tabular}\\
+%\end{table}
+We want to find $y[n]$, where
+\begin{equation}
+y[n]=\sum_{\kappa=-\infty}^{+\infty} x[\kappa]h[n-\kappa] \nonumber
+\end{equation}
+Let us, for simplicity, take a specific output, say at $n=0$. Hence our equation becomes
+\begin{equation}
+y[0]=\sum_{\kappa=-\infty}^{+\infty} x[\kappa]h[-\kappa] \nonumber
+\end{equation}
+So for every $\kappa$, we need the value of $x[\kappa]$ and $h[-\kappa]$. Let us tabulate $\kappa$, $x[\kappa]$ and $h[-\kappa]$ for relevant  $\kappa$'s:\\\\
+%\begin{table}[h]
+%\centering
+\begin{tabular}{| l | c r r r r | }
+  \hline
+  $\kappa$ & 2 & -1 & 0 & 1 & 2 \\
+  \hline
+  $x[\kappa]$ & 0 & -1 & 9 & 5 & 3\\
+  $h[-\kappa]$ & 2 & -1 & 1 & 0 & 0 \\
+  \hline
+\end{tabular}\\\\
+%\end{table}
+So effectively,
+\begin{eqnarray*}
+y[0]&=&\sum_{\kappa=-\infty}^{+\infty} x[\kappa]h[-\kappa] \nonumber \\
+       &=&\sum_{\kappa=-1}^{0} x[\kappa]h[-\kappa] \nonumber \\
+       &=&(-1\times -1)+(9\times 1)=10
+%       &=&10
+\end{eqnarray*}
+Hence we get $y[0]=10$. Similarly we can $y[n]$ for other values of $n$.
+
+So we have seen how to calculate the output $y[n]$ for 0. Now let's just do that for some other point, in case we miss some thing because of the simplicity zero sometimes offers, and then we'll try to generalize it.\\
+If we observe, '$n$' affects the $h[n-\kappa]$ term, and $x[\kappa]$ is independent of it, for some particular $\kappa$. Now $h[n-\kappa]$ becomes zero when $n=\kappa$. If $\kappa$ is after $n$, which means $\kappa>n$, we have the indices before zero going into the $h[n-\kappa]$ term. If $\kappa$ is before $n$, the situation is exact reverse, and we have indices after zero going in that term. Let's say if $n=2$, we have our 0 point at $\kappa=n=2$. The values of $\kappa$ after 2 correspond to the input to the impulse response term being -1, -2 and so on, and the values of $\kappa$ before 2 correspond to the input to the impulse response term being 1, 2 and so on. So now we have $h[2-\kappa]$ as\\
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r  }
+  $h[2-\kappa] =$ & 1 & -1 & 2\\
+     & $\uparrow$ &  & \\
+   $\kappa$  & 2 &  & \\
+\end{tabular}\\
+%\end{table}
+Now compare this with $h[0-\kappa]$ we had in the last calculation:\\
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r  }
+  $h[-\kappa] =$ & 1 & -1 & 2\\
+     & $\uparrow$ &  & \\
+   $\kappa$  & 0 &  & \\
+\end{tabular}\\
+%\end{table}
+Now we can easily calculate $h[2-n]$, like we did the last time, and it turns out to be 16( Confirm by doing it yourself!). So that is our $y[2]$.\\
+So for a given $n$, we first put down whatever is at 0, i.e. $\kappa=n$ point. Then we put those terms which are after zero sequentially before $n$ i.e. 1 at $n-1$, 2 at $n-2$ and so on; and  we put those terms which are before zero sequentially after $n$ i.e. -1 at $n+1$, -2 at $n+2$ and so on.\\
+We can also understand mathematically how this comes about. Considering $n$ fixed and $\kappa$ as the our variable, consider that we have a certain $h[\kappa]$. Now $h[\kappa+n]$ is nothing but $h[\kappa]$ shifted forward by $n$. Now when we replace $\kappa$ by $-\kappa$, we will have our signal reflect about zero i.e. its value at $a$ go to $-a$ for all integers $a$. So the zero point, for example, which was at $\kappa=-n$ in $h[\kappa+n]$, now lies at $\kappa=n$ in $h[-\kappa+n]$. All other points are put in the same order with respect to this zero, but to the opposite side than they were before.
+
+
+\subsection{Getting the Output for the General Case: the Train Platform Analogy}
+We have seen how $h[n-\kappa]$ is constructed.First, $h[0]$ is brought to $\kappa=n$. Then we bring $h[1]$, $h[2]$ etc. to $\kappa=n-1$, $n-2$ etc. respectively; and $h[-1]$, $h[-2]$ etc. to $\kappa=n+1$, $n+2$ etc. respectively. We do this all for a fixed $n$. If we change the value of $n$, say by +1, the whole structure will move forward by 1 step. However, the internal structure, the order in which particular outputs come is still the same, it remains retained. So we don't have to worry about constructing $h[n-\kappa]$ again and again: we can just create it once for, say $n=0$, and then as the $n$ changes, shift it accordingly. This eases our calculations, rather the representation very much: and computing the output seems less daunting than it did, for we have a proper method now telling us how to go about doing that.\\\\
+We can think of it as being similar to a train and a platform. $x[\kappa]$ is the platform, which remains fixed on the $\kappa-$scale, and $h[n-\kappa]$ is the train, moving according to $n$. Basically we are seeing where the zero is falling for some $n$, and then moving the whole 'train' of $h[n-\kappa]$ accordingly, so that point can be considered as the engine which drives the train. And the other values like $h[1]$, $h[2]$ are like bogies attached to that engine( although it seems rather weird that they are attached on the both sides of an engine, but leaving that aside). So if we have a nonzero value of, say $h[4]$, then we can say that there's a person there. Similarly, at position $\kappa$, if $x[\kappa]\neq 0]$, we can say that there's a person standing there on the platform. And When there's a person both inside the bogie and on the platform at the same position( of $\kappa$), they both shake their hands and the numbers( values of both $x[n-\kappa]$ \& $h[\kappa]$) get multiplied. The combined effect of all such multiplications is the value of output for a particular $n$.\\
+Let's look at the formula for computing the output $y[n]$:
+\begin{equation}
+y[n]=\sum_{\kappa=-\infty}^{+\infty} x[\kappa]h[n-\kappa] \nonumber
+\end{equation}
+Here, $ x[\kappa]$ represents the person on the platform at the location $\kappa$, $h[n-\kappa]$ represents the person in the bogie or coach who is currently at that position. So they both shake hands and the values of both of these get multiplied. The sigma of the summation represents that we are taking into consideration the combined effect of all these handshakes.\\
+Well, using the tools we just developed, let us write the complete output for the example we have considered here:\\
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r r }
+  $x[n] =$ & -1 & 9 & 5 & 3 \\
+   &  & $\uparrow$ &  & \\
+   &  & 0 &  & \\
+\end{tabular}\\
+%\end{table}
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r  }
+  $h[n] =$ & 1 & -1 & 2\\
+     & $\uparrow$ &  & \\
+     & 0 &  & \\
+\end{tabular}\\
+%\end{table}
+So we have\\
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r r }
+  $x[\kappa] =$ & -1 & 9 & 5 & 3 \\
+   &  & $\uparrow$ &  & \\
+  $\kappa$ &  & 0 &  & \\
+\end{tabular}\\
+%\end{table}
+%\begin{table}[h]
+%\centering
+\begin{tabular}{ l  c r r  }
+  $h[n-\kappa] =$ & 1 & -1 & 2\\
+     & $\uparrow$ &  & \\
+   $\kappa$  & n &  & \\
+\end{tabular}\\
+%\end{table}
+Thus, by putting different values of n, we get\\
+\begin{tabular}{| l | l |}
+\hline
+$n$ & $y[n]$\\ \hline
+$n \le -2$ & $=0$\\
+$n = -1$ & $=(-1)\times 1=-1$\\
+$n = 0$ & $=1\times 9+(-1)\times (-1)=10$\\
+$n = 1$ & $=1\times 5+(-1)\times 9+2\times (-1)=-6$\\
+$n = 2$ & $=1\times 3+(-1)\times 5+2\times 9=16$\\
+$n = 3$ & $=(-1)\times 3+2\times 5=7$\\
+$n = 4$ & $=2\times 3=6$\\
+$n \ge 5$ & $=0$\\ \hline
+\end{tabular}\\
+Now this process by which we computed the output given the input and the impulse response has a name: it is called "\textbf{ convolution}" and we say that we get the output by convolving $x[n]$ and $h[n]$. So in general, when we say $a[n]$ convolves with $b[n]$ to give $c[n]$ we mean
+\begin{equation}
+c[n]=\sum_{\kappa=-\infty}^{+\infty} a[\kappa]b[n-\kappa] \nonumber
+\end{equation}
+It is denoted as
+\begin{equation}
+c[n]=a[n]*b[n]
+\end{equation}
+or
+\begin{equation}
+c[n]=(a\ast b)[n]
+\end{equation}
+We will learn more about this convolution in subsequent lectures.
+

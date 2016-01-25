@@ -16,12 +16,15 @@
 \usepackage{comment}
 \usepackage{mathtools}
 \usepackage{amsfonts}
+\usepackage{amsthm}
 \usepackage{float}
 \usepackage{amssymb}
 \usepackage{cancel}
 \usepackage[framemethod=tikz]{mdframed}
 \usetikzlibrary{dsp,chains}
 \usepackage{hyperref}
+\usepackage[american]{circuitikz}
+
 % \usepackage[pdftex,
 %             pdfauthor={Prof. Vikram M. Gadre},
 %             pdftitle={EE210X Book},
@@ -47,6 +50,10 @@
 % Generates the index
 \usepackage{makeidx}
 \makeindex
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{case}{Case}[theorem]
+
 \begin{document}
 
 % Front matter
@@ -108,6 +115,27 @@ and \mbox{Donald E.~Knuth}.
 % r.9 introduction
 \cleardoublepage
 \mainmatter
+
+\part{Natural Domain}
+\chapter{Introduction to Abstractions}
+\input{module1-lectures-1-3.tex}
+\input{module1-lecture-4.tex}
+\input{module1-lecture-5.tex}
+\input{module1-lecture-6.tex}
+\input{module1-lecture-7.tex}
+\input{module1-lecture-8.tex}
+\input{module1-lecture-9.tex}
+\input{module1-lecture-10.tex}
+\input{module1-lecture-11.tex}
+\input{module1-lecture-12.tex}
+\input{module1-lecture-13.tex}
+\input{module1-lecture-14.tex}
+\input{module1-lecture-15.tex}
+\input{module1-lecture-16.tex}
+\input{module1-lecture-17.tex}
+\input{module1-lecture-18.tex}
+
+
 \part{Frequency Domain}
 \chapter{Sinusoids and LSI Systems}
 \input{module-2-lecture-1.tex}

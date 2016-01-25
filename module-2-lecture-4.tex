@@ -2,30 +2,35 @@
 
 \subsection{Introduction}
 \noindent
- A fundamental idea in the study of signals is to represent signals in terms of linear combination of \textit{basis} signals. In the previous session, we have embarked on some important concepts, relating to the idea of representing signals as a linear combination of sinusoids. In this lecture, we will be recapitulating those ideas.
- 
-\noindent
+ A fundamental idea in the study of signals is to represent signals in terms of linear combination of \textit{basis} signals. In the previous section, we have embarked on some important concepts, relating to the idea of representing signals as a linear combination of sinusoids.
+ %In this lecture, we will be recapitulating those ideas.
 We assumed that we wish to look either at periodic signals or signals over a finite interval $T$. Without loss of generality, let that interval be $(0,T)$. 
 
 \noindent
 We have assumed that such signals are signals spanned by  all sinusoids of angular frequency $\Omega = \frac{2\pi}{T}kt,k=0, \pm1, \pm2 ..$
 
 \noindent
-The typical periodic function, with period T is of the form   \
-                              \begin{equation*}x(t) = \sum_{k=-\infty}^{\infty}\ A_k\cos (\frac{2\pi}{T}kt + \phi_k)\end{equation*}
-        where $A_k$ denotes the amplitude, $\Omega = \frac{2\pi}{T}k$ is the angular frequency and $\phi_k$ the phase.
-  We had proved in the previous lecture, that typically such sinusoids are orthogonal if they don’t have same angular frequency.
-  \begin{equation*}
-\langle A_k \cos (\frac{2\pi}{T}k_1t + \phi_1),A_k \cos (\frac{2\pi}{T}k_2t + \phi_2)\rangle = 0 \enspace \enspace		for \enspace k_1 \neq k_2 \end{equation*}
+The typical periodic function, with period $T$ is of the form
+\begin{equation*}
+  x(t) = \sum_{k=-\infty}^{\infty} \! A_k\cos (\frac{2\pi}{T}kt + \phi_k)
+\end{equation*}
+where $A_k$ denotes the amplitude, $\Omega = \frac{2\pi}{T}k$ is the angular frequency and $\phi_k$ the phase.
+We had proved that these sinusoids are orthogonal if they don’t have same angular frequency.
+\begin{equation*}
+  \langle A_{k_1} \cos (\frac{2\pi}{T}k_1t + \phi_1),A_{k_2} \cos (\frac{2\pi}{T}k_2t + \phi_2)\rangle = 0 \enspace \enspace \text{for} \enspace k_1 \neq k_2 
+\end{equation*}
 
 \noindent
-This important concept requires appreciating several different ideas. Using these ideas, we can decompose signal $x(t)$ in terms of sinusoids. However, there are some signals which can’t be spanned using these sinusoids. Such signals are beyond the scope of discussion that we are going to undertake at this level of the course.
-
+This important concept requires appreciating several different ideas. Using these ideas, we can decompose signal $x(t)$ in terms of sinusoids. However, there are some signals which can’t be spanned using these sinusoids. Such signals are beyond the scope of discussion that we are going to undertake at this stage.
+%%%
+%%%
 \subsection{ Orthogonal vectors at a particular frequency}
 \noindent
 Consider a periodic signal $x(t)$ with fundamental period $T$. Then we can write $x(t)$ as
 %Let us assume the signal $x(t)$ as
-\begin{equation*}x(t) = \sum_{k=-\infty}^{\infty}\ A_k\cos (\frac{2\pi}{T}kt + \phi_k)\end{equation*}
+\begin{equation*}
+  x(t) = \sum_{k=-\infty}^{\infty} \! A_k\cos (\frac{2\pi}{T}kt + \phi_k)
+\end{equation*}
 %where $x(t)$ is periodic with period $T$ and w
 We constrain ourselves to $0<t<T$.
 
@@ -41,45 +46,41 @@ We can think of the cosines $\cos (\frac{2\pi}{T}kt + \phi_k)$ as countably infi
 To find out the component of $x(t)$ along these orthogonal vectors, we need to take the dot product of $x(t)$ with the unit vector, in the direction of orthogonal vectors $\cos(\frac{2\pi}{T}kt + \phi_k), 0<t<T$.
 For calculating unit vector, we need to find the magnitude of the vector $\cos(\frac{2\pi}{T}kt + \phi_k)$ using dot product.
 
-\begin{equation*} \left|\cos(\frac{2\pi}{T}kt + \phi_k)\right| = \enspace 
-\langle \cos (\frac{2\pi}{T}kt + \phi_k), \cos (\frac{2\pi}{T}kt + \phi_k)\rangle  \enspace \enspace	\end{equation*}
-\begin{equation*} \enspace = \int_{0}^{T}  \cos (\frac{2\pi}{T}kt + \phi_k) \cos (\frac{2\pi}{T}kt + \phi_k) dt\end{equation*}
-\begin{equation*} \enspace = \int_{0}^{T}  \cos^2 (\frac{2\pi}{T}kt + \phi_k) dt \end{equation*}
-\begin{equation*} \enspace = \int_{0}^{T} (\frac{1}{2} + \cos (2(\frac{2\pi}{T}kt + \phi_k)) dt\end{equation*}
-\begin{equation*} \enspace = \int_{0}^{T} \frac{1}{2} dt + \int_{0}^{T} \cos (2(\frac{2\pi}{T}kt + \phi_k)) dt\end{equation*}
-\begin{equation*} \enspace = \frac{T}{2} \end{equation*}
-
-
-\noindent
-Hence the magnitude square of the cosine is $T/2$ and hence the magnitude is $\sqrt{T/2}$. So, the unit vector is given by
+\begin{align*} \left|\cos(\frac{2\pi}{T}kt + \phi_k)\right| &= \langle \cos (\frac{2\pi}{T}kt + \phi_k), \cos (\frac{2\pi}{T}kt + \phi_k)\rangle \\
+  &= \int_{0}^{T} \! \cos (\frac{2\pi}{T}kt + \phi_k) \cos (\frac{2\pi}{T}kt + \phi_k) \ \dm t \\
+  &= \int_{0}^{T} \! \cos^2 (\frac{2\pi}{T}kt + \phi_k) \ \dm t \\
+  &= \int_{0}^{T} \! (\frac{1}{2} + \cos (2(\frac{2\pi}{T}kt + \phi_k)) \ \dm t \\
+  &= \int_{0}^{T} \! \frac{1}{2} \ \dm t + \int_{0}^{T} \! \cos (2(\frac{2\pi}{T}kt + \phi_k)) \ \dm t \\
+  &= \frac{T}{2}
+\end{align*}
+%%%
+Thus, the magnitude square of the cosine is $T/2$ and hence the magnitude is $\sqrt{T/2}$. So, the unit vector is given by
 
 \begin{equation*} \textrm{Unit vector} = \sqrt{\frac{2}{T}}\cos (\frac{2\pi}{T}kt + \phi_k)\end{equation*}
                     
 \noindent
 But still, there is one unknown quantity, namely, $\phi_k$ in this unit vector. However, we can think of this vector as a vector in a two dimensional space:
 
-\begin{equation*}\sqrt{\frac{2}{T}}\cos (\frac{2\pi}{T}kt + \phi_k) = \sqrt{\frac{2}{T}}[cos\phi_k\cos (\frac{2\pi}{T}kt) - sin\phi_k\sin (\frac{2\pi}{T}kt)] \end{equation*}
+\begin{equation*}\sqrt{\frac{2}{T}}\cos (\frac{2\pi}{T}kt + \phi_k) = \sqrt{\frac{2}{T}}[\cos\phi_k\cos (\frac{2\pi}{T}kt) - \sin\phi_k\sin (\frac{2\pi}{T}kt)] \end{equation*}
 that is, the unit vector can be thought of as a linear combination of two vectors.
 
 \noindent
 We have,
-\begin{equation*}
-\langle \cos (\frac{2\pi}{T}kt + \phi_k), \sin (\frac{2\pi}{T}kt + \phi_k) \rangle = \int_{0}^{T}  \cos (\frac{2\pi}{T}kt + \phi_k) \sin (\frac{2\pi}{T}kt + \phi_k) dt  \end{equation*}
-\begin{equation*} = \frac{1}{2} \int_{0}^{T} 2 \cos (\frac{2\pi}{T}kt + \phi_k) \sin (\frac{2\pi}{T}kt + \phi_k) dt  \end{equation*}
-\begin{equation*} = \frac{1}{2} \int_{0}^{T} \sin (\frac{4\pi}{T}kt + \phi_k) dt \end{equation*}
-\begin{equation*} = 0 \end{equation*}
-
-\noindent
- Hence the cosine and sine components are also orthogonal. $cos\phi_k$ and $sin\phi_k$ are now two unknown constants.
-
-\noindent
-Therefore decomposing $x(t)$ along $\cos (\frac{2\pi}{T}kt + \phi_k)$ will give same results as decomposing x(t) along  $\cos (\frac{2\pi}{T}kt)$ and $\sin (\frac{2\pi}{T}kt)$. So to decompose x(t) along $\cos (\frac{2\pi}{T}kt)$ and $\sin (\frac{2\pi}{T}kt)$ we require unit vectors, which we already have calculated above.
-   
-\noindent
-   So, the two unit vectors are $\sqrt{\frac{2}{T}}\cos (\frac{2\pi}{T}kt)$ and $\sqrt{\frac{2}{T}}\sin (\frac{2\pi}{T}kt)$.
-  
-  \subsection{Projection of Vectors}
-\noindent
+\begin{align*}
+  \langle \cos (\frac{2\pi}{T}kt + \phi_k), \sin (\frac{2\pi}{T}kt + \phi_k) \rangle &= \int_{0}^{T} \! \cos (\frac{2\pi}{T}kt + \phi_k) \sin (\frac{2\pi}{T}kt + \phi_k) \ \dm t  \\
+  &= \frac{1}{2} \int_{0}^{T} \! 2 \cos (\frac{2\pi}{T}kt + \phi_k) \sin (\frac{2\pi}{T}kt + \phi_k) \ \dm t \\
+  &= \frac{1}{2} \int_{0}^{T} \! \sin (\frac{4\pi}{T}kt + \phi_k) \ \dm t \\
+  &= 0
+\end{align*}
+%%%
+Hence, the cosine and sine components are also orthogonal. $\cos\phi_k$ and $\sin\phi_k$ are now two unknown constants.
+%%%
+Therefore, decomposing $x(t)$ along $\cos (\frac{2\pi}{T}kt + \phi_k)$ will give the same results as decomposing $x(t)$ along  $\cos (\frac{2\pi}{T}kt)$ and $\sin (\frac{2\pi}{T}kt)$. So, to decompose $x(t)$ along $\cos (\frac{2\pi}{T}kt)$ and $\sin (\frac{2\pi}{T}kt)$, we require unit vectors, which we already have calculated above.
+%%%
+So, the two unit vectors are $\sqrt{\frac{2}{T}}\cos (\frac{2\pi}{T}kt)$ and $\sqrt{\frac{2}{T}}\sin (\frac{2\pi}{T}kt)$.
+%%%
+%%% 
+\subsection{Projection of Vectors}
 Let $u_1$ = $\sqrt{\frac{2}{T}}\cos (\frac{2\pi}{T}kt)$ and $u_2 = \sqrt{\frac{2}{T}}\sin (\frac{2\pi}{T}kt)$. We know that at frequency $2\pi k/T$, there are two orthogonal vectors, $u_1$ and $u_2$. We have a two dimensional space and we need to calculate the component of the vector $x(t)$ along orthogonal vectors of this 2D space.
   
 \noindent
@@ -119,8 +120,7 @@ This can be simplified as
 
 \noindent
 \subsection{Decomposition of square wave}
-We have a periodic signal $x(t)$ in Figure 1, defined as
-
+We have a periodic signal $x(t)$ in Fig.\ref{fig:square-wave}, defined as
 \[
 x(t) =
 \left\{
@@ -132,11 +132,12 @@ x(t) =
  \]
 
 \noindent
-$x(t) = x(t+T)$ for all t, i.e. $x(t)$ is periodic with period T.
+$x(t) = x(t+T)$ for all $t$, i.e. $x(t)$ is periodic with period $T$.
               
-\begin{figure}[ht]
+\begin{figure}[ht]\label{fig:square-wave}
 \centering
-\includegraphics[scale=0.32]{S_216_1.PNG} \\Figure 1
+\includegraphics[scale=0.32]{S_216_1.PNG} %\\Figure 1
+\caption{Plot of $x(t)$}
 \end{figure}
 
 
@@ -150,35 +151,34 @@ Let us calculate the quantity $\langle x(t), \cos (\frac{2\pi}{T}kt)\rangle \cdo
 
 
 \noindent
-For $k=1$ and $k=2$, we can see from Figure 2 that, the positive portion gets annulled by the negative portion. Similar is the case for $k=3, 4...$ and so on. Hence $\langle x(t), \cos (\frac{2\pi}{T}kt)\rangle= 0$ for given $x(t)$.
+For $k=1$ and $k=2$, we can see from Fig.\ref{fig:square-dot-cosine} that, the positive portion gets annulled by the negative portion. Similar is the case for $k=3, 4...$ and so on. Hence $\langle x(t), \cos (\frac{2\pi}{T}kt)\rangle= 0$ for given $x(t)$.
 
 
-\begin{figure}[ht]
+\begin{figure}[ht]\label{fig:square-dot-cosine}
 \centering
-\includegraphics[scale=0.32]{s_216.PNG} \\Figure 2		
+\includegraphics[scale=0.32]{s_216.PNG} %\\Figure 2
+\caption{Dot product of the square wave with cosines}	
 \end{figure}
 
 \noindent
-Calculating  $\langle x(t), \sin (\frac{2\pi}{T}kt)\rangle \cdot \frac{2}{T}\sin (\frac{2\pi}{T}kt)$, we have as shown in Figure 3,
+Calculating  $\langle x(t), \sin (\frac{2\pi}{T}kt)\rangle \cdot \frac{2}{T}\sin (\frac{2\pi}{T}kt)$, we have as shown in Fig.\ref{fig:square-dot-sine},
 
-\begin{figure}[ht]
+\begin{figure}[ht]\label{fig:square-dot-sine}
 \centering
-\includegraphics[scale=0.32]{S_216_3.PNG} \\Figure 3		
+\includegraphics[scale=0.32]{S_216_3.PNG} %\\Figure 3
+\caption{Dot product of the square wave with sines}	
 \end{figure}
-
-\begin{equation*} \langle x(t), \sin (\frac{2\pi}{T}kt)\rangle = \int_{0}^{T} x(t)\sin (\frac{2\pi}{T}kt) dt\end{equation*}
-\begin{equation*} \langle x(t), \sin (\frac{2\pi}{T}kt)\rangle = \int_{0}^{\frac{T}{2}}\sin (\frac{2\pi}{T}kt) + \int_{\frac{T}{2}}^{T}{-\sin (\frac{2\pi}{T}kt)} dt\end{equation*}
+%%%
+\begin{equation*} \langle x(t), \sin (\frac{2\pi}{T}kt)\rangle = \int_{0}^{T} \! x(t)\sin (\frac{2\pi}{T}kt) \ \dm t\end{equation*}
+\begin{equation*} \langle x(t), \sin (\frac{2\pi}{T}kt)\rangle = \int_{0}^{\frac{T}{2}} \! \sin (\frac{2\pi}{T}kt) \ \dm t + \int_{\frac{T}{2}}^{T} \! {-\sin (\frac{2\pi}{T}kt)} \ \dm t \end{equation*}
 \noindent
 Also, we know that 
- \begin{equation*}\int_{0}^{\frac{T}{2}}\sin (\frac{2\pi}{T}kt) dt = -\int_{\frac{T}{2}}^{T}\sin (\frac{2\pi}{T}kt) dt \end{equation*}
+ \begin{equation*}\int_{0}^{\frac{T}{2}} \! \sin (\frac{2\pi}{T}kt) \ \dm t = -\int_{\frac{T}{2}}^{T} \! \sin (\frac{2\pi}{T}kt) \ \dm t \end{equation*}
 \noindent
 Using this, we have
-\begin{equation*} \langle x(t), \sin (\frac{2\pi}{T}kt)\rangle = 2\int_{0}^{\frac{T}{2}}\sin (\frac{2\pi}{T}kt)dt\enspace = \left[-2\frac{\cos (\frac{2\pi}{T}kt)}{\frac{2\pi}{T}k}\right]_0^\frac{T}{2}\end{equation*}
-
-\noindent
+\begin{equation*} \langle x(t), \sin (\frac{2\pi}{T}kt)\rangle = 2\int_{0}^{\frac{T}{2}} \! \sin (\frac{2\pi}{T}kt) \ \dm t = \left[-2\frac{\cos (\frac{2\pi}{T}kt)}{\frac{2\pi}{T}k}\right]_0^\frac{T}{2}\end{equation*}
+%%%
 For $k = 2n$, the above integral goes to zero as $\cos ({2\pi}n) = 1$ for all $n \in \mathbb{Z}$.
-
-\noindent
 For $k = 2n-1$, the above integral has the value of $4T/\pi k$ because $\cos(2{\pi}(2n-1)) = -1$ for all $n \in \mathbb{Z}$. Thus,
 
 \begin{equation*} \langle x(t), \sin (\frac{2\pi}{T}kt)\rangle = \frac{4T}{{\pi}k} \textrm{ (for odd }k) \end{equation*}

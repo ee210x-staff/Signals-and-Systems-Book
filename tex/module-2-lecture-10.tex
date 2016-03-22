@@ -1,0 +1,128 @@
+\section{Module 2: Lecture 10\\Spectral Density}
+
+\subsection{Introduction}
+	In the previous section, we derived the multiplication property of the Fourier Transform which subsequently led to the derivation of Parseval’s Theorem. 
+	In this section, we will see more on the interpretation of the Parseval’s theorem as the invariance of the inner product of two signals calculated in time and angular frequency (or Fourier) domain. 
+	We will also define the energy of a signal and relate it with the Parseval’s Theorem and introduce the notion of Spectral Density of a signal.
+	Having done that, we will introduce the differentiation property of the Fourier Transform and its dual which will help us in calculating Fourier transforms of many more signals from the already known simpler Fourier transforms.
+\subsection{Invariance of Inner Product on Change of Basis}
+	The property
+	\begin{equation*}
+		\int_{-\infty}^{\infty} \! x(t)\overline{y(t)} \ \dm t = \cfrac{1}{2\pi}\int_{-\infty}^{\infty} \! X(\Omega)\overline{Y(\Omega)} \ \dm \Omega
+	\end{equation*}
+	has a deeper implication when we think of this in terms of the inner product of $x$ and $y$. Recall from vector algebra that in two dimensions, we can write any vector $\overrightarrow{v}$ as a linear combination of any two orthonormal basis vectors. Consider two such vectors, and two different sets of orthonormal vectors, such that
+	\begin{equation*}
+		\overrightarrow{v_1}=v_{11}\hat{u}_1+v_{12}\hat{u}_2 = v_{13}\hat{u}_3+v_{14}\hat{u}_4
+	\end{equation*}
+	and
+	\begin{equation*}
+		\overrightarrow{v_2}=v_{21}\hat{u}_1+v_{22}\hat{u}_2 = v_{23}\hat{u}_1+v_{24}\hat{u}_4
+	\end{equation*}
+	Now, the inner product or the dot product between the two vectors is the magnitude of one vector times the projection of the second vector along the first vector. The important thing to note here is that the inner product is a property of the vectors in themselves. This inner product, by definition, \emph{does not depend on which basis we choose to express them}. Thus,
+	\begin{equation*}
+		\overrightarrow{v_1}.\overrightarrow{v_2}=v_{11}v_{21}+v_{12}v_{22} = v_{13}v_{23}+v_{14}v_{24}
+	\end{equation*}
+	This is exactly what the meaning of Parseval's theorem is. In the time domain, the basis vectors used, as you can remember from the first part, are the unit impulses:
+	\begin{equation*}
+		x(t) = \int_{-\infty}^{+\infty} \! x(\lambda)\delta(t-\lambda) \ \mathrm{d}\lambda
+	\end{equation*}
+	Whereas in the frequency domain, the basis vectors are the rotating complex numbers or phasors:
+	\begin{equation*}
+		X(\Omega) = \int_{-\infty}^{+\infty} \! x(\lambda)e^{-j\Omega\lambda} \ \mathrm{d}\lambda
+	\end{equation*}
+	But the inner product between two signals remains independent of the basis, which is what the Parseval's theorem states.
+	\begin{equation*}
+		\int_{-\infty}^{\infty} \! x(t)\overline{y(t)} \ \dm t = \cfrac{1}{2\pi}\int_{-\infty}^{\infty} \! X(\Omega)\overline{Y(\Omega)} \ \dm \Omega
+	\end{equation*}
+	The factor of $2\pi$ arises due to the same reason why it arrived in the inverse Fourier transform, which is the normalization of the complex exponential.
+\subsection{Energy of a Signal}
+	The energy $E_x$ of a continuous time signal $x(t)$ is defined as
+	\begin{equation*}
+		E_x = \int_{-\infty}^{\infty} \! |x(t)|^2 \ \dm t
+	\end{equation*}
+	\subsubsection{Relating Energy of a Signal and Parseval's Theorem}
+		Consider two continuous time signals $x(t)$ and $y(t)$ with Fourier Transforms $X(\Omega)$ and $Y(\Omega)$ respectively. Then Parseval's theorem states that,
+		\begin{equation*}
+			\int_{-\infty}^{\infty} \! x(t)\overline{y(t)}\ \dm t = \cfrac{1}{2\pi}\int_{-\infty}^{\infty} \! X(\Omega)\overline{Y(\Omega)} \ \dm \Omega
+		\end{equation*}
+		\noindent
+		where $\overline{(\cdot)}$ denotes the complex conjugate of the corresponding signal.
+		\noindent
+		Now, if we substitute $y(t) = x(t)$ in the above relation, we get,
+		\begin{equation*}
+			\int_{-\infty}^{\infty} \! x(t)\overline{x(t)} \ \dm t = \cfrac{1}{2\pi}\int_{-\infty}^{\infty} \! X(\Omega)\overline{X(\Omega)} \ \dm \Omega
+		\end{equation*}
+		Since, $x(t)\overline{x(t)} = |x(t)|^2$ and $X(\Omega)\overline{X(\Omega)} = |X(\Omega)|^2$ we get,
+		\begin{equation*}
+			\int_{-\infty}^{\infty} \! |x(t)|^2 \ \dm t = \cfrac{1}{2\pi}\int_{-\infty}^{\infty} \! |X(\Omega)|^2 \ \dm \Omega
+		\end{equation*}
+		\noindent
+		From the above relation, we see that the energy of a signal can also be calculate using the formula,
+		\begin{equation*}
+		E_x = \cfrac{1}{2\pi}\int_{-\infty}^{\infty}|X(\Omega)|^2d\Omega
+		\end{equation*}
+	\subsubsection{Energy Spectral Density}
+		We have seen that if a signal $x(t)$ has a Fourier Transform $X(\Omega)$, its energy can be calculated from the angular frequency domain using the formula,
+		\begin{equation*}
+			E_x = \cfrac{1}{2\pi}\int_{-\infty}^{\infty}|X(\Omega)|^2d\Omega
+		\end{equation*}
+		Integrating $|X(\Omega)|^2$ over the entire angular frequency axis and multiplying the result by $\cfrac{1}{2\pi}$ gives us the energy of the signal. Thus $|X(\Omega)|^2$ conveys the distribution of energy along the angular frequency axis. Hence, the integrand $|X(\Omega)|^2$ in the above formula is of significance and is called the Energy Spectral Density of the signal $x(t)$.
+	\subsubsection{Energy Spectral Density and Linear Shift-Invariant Systems}
+		Consider a linear shift invariant system having an impulse response $h(t)$ and let $y(t)$ be the output  of this system when an input $x(t)$ is applied to it. Then, we have
+		\begin{equation*}
+			y(t) = x(t)*h(t)
+		\end{equation*}
+		where $*$ denotes the convolution operator. Assume that the Fourier transforms of $h(t)$ and $x(t)$. Let $H(\Omega)$ and $X(\Omega)$ be their respective Fourier Transforms. Then the Fourier Transform $Y(\Omega)$ of the signal $y(t)$ is given by,
+		\begin{equation*}
+			Y(\Omega) = X(\Omega)H(\Omega)
+		\end{equation*}
+		Therefore,
+		\begin{equation*}
+			|Y(\Omega)|^2 = |X(\Omega)|^2|H(\Omega)|^2
+		\end{equation*}
+		Note that $|Y(\Omega)|^2$, $|X(\Omega)|^2$ and $|H(\Omega)|^2$ are essentially the energy spectral densities of the signals $y(t)$, $x(t)$ and the impulse response $h(t)$ respectively.
+
+		\noindent
+		Thus, the energy spectral density of the output is equal to the energy density of the input multiplied by the energy density of the frequency response.
+\subsection{The Differentiation Property of the Fourier Transform}
+Consider a continuous time signal $x(t)$ which has a Fourier transform $X(\Omega)$, so that we can write,
+\begin{equation*}
+	x(t) = \cfrac{1}{2\pi}\int_{-\infty}^{\infty} \! X(\Omega)e^{j\Omega t} \ \dm \Omega
+\end{equation*}
+Differentiating on both sides with respect to $t$, we get,
+\begin{equation*}
+	\cfrac{\dm x(t)}{\dm t} = \cfrac{\dm}{\dm t}\left(\cfrac{1}{2\pi}\int_{-\infty}^{\infty} \! X(\Omega)e^{j\Omega t} \ \dm \Omega\right)
+\end{equation*}
+Taking the derivative under the integral we get,
+\begin{equation*}
+	\cfrac{\dm x(t)}{\dm t} = \cfrac{1}{2\pi}\int_{-\infty}^{\infty} \! X(\Omega)\cfrac{\dm (e^{j\Omega t})}{\dm t} \ \dm \Omega
+\end{equation*}
+Therefore,
+\begin{equation*}
+	\cfrac{\dm x(t)}{\dm t} = \cfrac{1}{2\pi}\int_{-\infty}^{\infty} \! (X(\Omega)j\Omega) e^{j\Omega t} \ \dm \Omega
+\end{equation*}
+Comparing the above equation with the definition of the inverse Fourier Transform, we see that the right hand side is the Inverse Fourier Transform of $j\Omega X(\Omega)$. Thus, the differentiation property of the Fourier transform states that if a continuous variable signal $x(t)$ has the Fourier Transform $X(\Omega)$, then the Fourier transform of $\cfrac{\dm x(t)}{\dm t}$ is $j\Omega X(\Omega)$.
+\subsubsection{Interpretation of the differentiation property}
+	The differentiation property of the Fourier Transform can be interpreted in the following way: If you differentiate a signal $x(t)$ with respect to $t$, then the Fourier transform $X(\Omega)$ gets phase shifted by $90$ degrees and scaled by $\Omega$.
+\subsubsection{Duality and the differentiation property}
+\noindent
+We can see that there are two operators involved in the differentiation property - differentiation in time domain and pointwise multiplication by $j\Omega$ in angular frequency domain.
+But, what changes happens to the signal $x(t)$ when we differentiate the Fourier Transform $X(\Omega)$ with respect to $\Omega$ in angular frequency domain? Let's find out.\\
+We know that,
+\begin{equation*}
+	X(\Omega) = \int_{-\infty}^{\infty} \! x(t)e^{-j\Omega t} \ \dm t
+\end{equation*}
+Differentiating both the sides with respect to $\Omega$ we get,
+\begin{equation*}
+	\cfrac{\dm X(\Omega)}{\dm \Omega} = \cfrac{\dm \int_{-\infty}^{\infty} \! x(t)e^{-j\Omega t} \ \dm t}{ \dm \Omega}
+\end{equation*}
+Taking the derivative under the integral we get,
+\begin{equation*}
+	\cfrac{\dm X(\Omega)}{\dm \Omega} = \int_{-\infty}^{\infty} \! x(t)\cfrac{\dm ( e^{-j\Omega t} ) }{\dm \Omega} \ \dm t
+\end{equation*}
+Therefore,
+\begin{equation*}
+	\cfrac{\dm X(\Omega)}{\dm \Omega} = \int_{-\infty}^{\infty} \! -j t \ x(t)e^{-j\Omega t} \ \dm t
+\end{equation*}
+Comparing the above equation with the definition of the Fourier Transform we see that Fourier transform of $-jt \ x(t)$ is $\cfrac{\dm X(\Omega)}{\dm \Omega}$. Thus, differentiation of Fourier Transform $X(\Omega)$ with respect to $\Omega$ in angular frequency domain leads to pointwise multiplication of signal $x(t)$ by $-jt$ in the time domain. Hence, the above property is the dual of the differentiation property.\\
+Differentiation in one domain leads to pointwise multiplication in the other domain and pointwise multiplication in one domain leads to differentiation in the other domain. This is the duality property of the Fourier Transform.

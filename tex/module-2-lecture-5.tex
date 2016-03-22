@@ -1,0 +1,102 @@
+\section{Module 2: Lecture 5\\Fourier Series Decomposition and its Applications}
+
+\subsection{Introduction}
+We have been decomposing periodic waveforms into their periodic sinusoidal components. In this section, we will look at a variation of the same decomposition using complex exponential functions. One way of doing this is to convert each sinusoidal component of sinusoidal decomposition into corresponding exponential functions. However, in some cases, we prefer to \textit{a priori} decompose the waveform in complex exponential components.\\
+We shall also see how to go from the complex exponential components to sinusoidal components. We will then look at the applications of both sinusoidal and complex exponential decompositions; in particular, we will be analyzing its utility in determining the output from a linear shift invariant system on applying a periodic input.
+We will also see some conditions under which we cannot obtain a Fourier series decomposition for a periodic waveform.
+%%%
+%%%
+\subsection{Complex Exponential Fourier Series Decomposition}
+Suppose we are given a periodic signal $x(t)$ with period $T$. We wish to write $x(t)$ in terms of sum of complex exponential functions:
+$$ x(t) = \sum_{k=-\infty}^{\infty}{C_{k} \ e^{j2\pi kt/T}} $$
+where $C_k \in \mathbb{C}$.
+Basically, we are trying to write $x(t)$ as a linear combination of complex exponential functions rotating at angular frequencies $2\pi k/T$ for all integer $k$. Note that the complex exponentials with angular frequencies as positive integral multiples of $2\pi kt/T$ represent anticlockwise rotating phasors while the complex exponentials with negative angular frequencies represent clockwise rotating phasors.
+\subsubsection{Orthogonality of Fourier Series Components}
+We now establish the orthogonality between the complex exponential components.
+We take two integers $k$ and $l$ and evaluate the inner product
+\begin{equation}\label{eqn:dot-product-exp}
+\int_{-T/2}^{T/2} \! {\frac{1}{T}e^{(j2\pi kt/T)}e^{(j2\pi (-l)t/T)}} \ \dm t = \int_{-T/2}^{T/2} \! {\frac{1}{T}e^{(j2\pi (k-l)t/T)}} \ \dm t
+\end{equation}
+We have two cases now:
+\begin{itemize}
+\item {\textbf{Case 1:}} $k=l$ : The integral in \ref{eqn:dot-product-exp} becomes $\int_{-T/2}^{T/2} \! \frac{1}{T} \ \dm t = 1$
+\item {\textbf{Case 2:}} $k \neq l$ : The integral in \ref{eqn:dot-product-exp} becomes
+\begin{equation*}
+	\int_{-T/2}^{T/2} \! {\frac{1}{T}e^{(j2\pi (k-l)t/T)}} \ \dm t = \frac{1}{T}\frac{e^{(j2\pi (k-l)t/T)}}{(j2\pi (k-l)/T)}\Bigg|_{-T/2}^{T/2} = 0
+\end{equation*}
+\end{itemize}
+\subsubsection{Obtaining Complex exponential Decomposition from Sinusoidal Decomposition}
+Suppose we are given the sinusoidal components of the decomposition of a real waveform $$x(t) = \sum_{0}^{\infty}A_{k}\cos(2\pi kt/T + \phi_{k})$$
+Note that in the above sum, for $k = 0$, we will have the component as $A_{0}\cos(\phi_{0})$. We can merge the constant $\cos(\phi_{0})$ into $A_{0}$ and we will simply have the constant $A_{0}$ for $k = 0$.
+Now for a non-zero integer $k$ using $\cos(\theta) = \frac{1}{2}(e^{j\theta} + (e^{j\theta})^{*})$, (Note: $C^{*}$ denotes complex conjugate of $C$), we have $$A_{k}\cos(2\pi kt/T + \phi_{k}) = \frac{1}{2}\Bigg(A_{k}e^{j\phi_{k}}e^{j2\pi kt/T} + (A_{k}e^{j\phi_{k}})^{*} (e^{-j2\pi kt/T})\Bigg)$$
+since $A_k$ are real.
+$$\implies C_{k} = \frac{1}{2}A_{k}e^{j\phi_{k}}$$
+$$\implies C_{-k} = \frac{1}{2}(A_{k}e^{j\phi_{k}})^{*}$$
+And we also have trivially $C_{0} = A_{0}$
+Notice that for real waveform, we have $C_{k} = (C_{-k})^{*}$.
+%%%
+%%%
+\subsubsection{Converting Complex Exponential to Sinusoidal Decomposition}
+Suppose we are given a real signal
+\begin{equation*}
+	x(t) = \sum_{k=1}^{\infty}{C_{k}e^{(j2\pi kt/T)}} + \sum_{k=-\infty}^{-1}{C_{k}e^{(j2\pi kt/T)}} + C_{0} 	
+\end{equation*}
+Now, note that for an integer $k \neq 0$,
+\begin{equation*}
+	\int_{-T/2}^{T/2} \! e^{(j2\pi kt/T)} \ \dm t = \frac{1}{T}\frac{e^{(j2\pi kt/T)}}{(j2\pi k/T)}\Bigg|_{-T/2}^{T/2} = 0	
+\end{equation*}
+whereas, for k = 0, $$\int_{-T/2}^{T/2} \! 1 \ \dm t = T$$
+So, basically we can obtain $C_{0}$ by integrating $x(t)$ over time $T$. In the Fourier decomposition, only $C_{0}$ will give a non-zero integral which is equal to $C_{0}\cdot T$.
+Hence,
+\begin{equation*}
+	C_{0} = \frac{1}{T}\int_{-T/2}^{T/2} \! x(t) \ \dm t
+\end{equation*}
+Now, since for real $x(t)$ we have $C_{k} = (C_{-k})^{*}$, we get
+\begin{equation*}
+	C_{k}e^{j2\pi kt/T} = (C_{-k}e^{-j2\pi kt/T})^{*}	
+\end{equation*}
+So we have 
+\begin{equation*}
+	C_{k}e^{j2\pi kt/T} + C_{-k}e^{-j2\pi kt/T} = 2 \text{Re} (C_{k}e^{j2\pi kt/T})	
+\end{equation*}
+Using the polar form of $C_{k}$ which is $|{C_{k}}|e^\phi_{k}$, we get
+\begin{equation*}
+ 	2 Re (C_{k}e^{j2\pi kt/T}) =  2|{C_{k}}|Re(e^{j2\pi kt/T + \phi_{k}} = 2|{C_{k}}|\cos(j2\pi kt/T + \phi_{k})
+\end{equation*}
+Finally, we have the sinusoidal decomposition
+\begin{equation*}
+	x(t) = C_{0} + \sum_{k=1}^{\infty}2|{C_{k}}|\cos(j2\pi kt/T + \phi_{k})
+\end{equation*}
+%%%
+%%%
+\subsection{Periodic Input to a Simple RC Circuit}
+Suppose, we apply a real periodic voltage $x(t)$ with a time period $T$ as an input to a series RC-circuit. Recall that an RC circuit is a linear shift invariant system. Suppose we can write complex exponential decomposition of $x(t)$ as $$\sum_{k=-\infty}^{\infty}{C_{k}e^{(j2\pi kt/T)}}$$ The advantage of doing this is that we can use the fact that a complex exponential input to a linear shift invariant system simply gives the same complex exponential multiplied by a constant as its ouput. By phasor analysis of the circuit, we have the transfer function $$ \frac{j(2\pi k/T) CR}{1 + j(2\pi k/T) CR}$$
+So, the output waveform will be simply
+\begin{equation*}
+	y(t) = \sum_{k=-\infty}^{\infty} \frac{j(2\pi k/T) CR}{1 + j(2\pi k/T) CR} {C_{k}e^{(j2\pi kt/T)}}	
+\end{equation*}
+%%%
+%%%
+This illustrates the power of having complex exponential decomposition of a waveform since we can obtain the output waveform quite simply if it is passed through a linear shift invariant system. Now, one catch in the above discussion is that we assumed that the decomposition of $x(t)$ in to a Fourier series is possible. It turns out it's \emph{not} always the case that we can write a Fourier series decomposition for a periodic waveform! Although, for most of the practical waveforms, we can write it. We will look at the conditions under which we can write the Fourier series decomposition for a periodic waveform. There are some waveforms for which we cannot find the Fourier decomposition. One such example is $x(t) = \sin{(1/frac(t))}$ where $frac(t)$ denotes fractional part of $t$. So, $x(t)$ is periodic with period 1 but still its Fourier series decomposition fails to exist. There are certain conditions called the ‘Dirichlet’ conditions under which Fourier analysis can be done. We shall not discuss them here.
+%%%
+%%%
+\subsection{Periodic Inputs to a General Linear Shift Invariant System}
+
+In this section we will use the Fourier series decomposition to determine the output from a linear shift invariant system on applying a periodic input. Of course, for our analysis, we will assume that the Fourier series decomposition of the input waveform exists.\\
+Let $\mathbb{S}$ denote a linear shift invariant system and let $h(t)$ be its impulse response. We apply a periodic input waveform $x(t)$. Now, using linearity of the system, output of the system is simply the sum of the outputs obtained for each component of Fourier series decomposition of $x(t)$.\\
+Let us derive the output for the $k^{\textnormal{th}}$ component of $x(t)$. The output for $k^{\textnormal{th}}$ will be the convolution of $h(t)$ and the input itself.
+\begin{equation*}
+	\int_{-\infty}^{\infty} \! {h(\tau) \cdot C_{k}e^{j2\pi k(t- \tau)/T}} \ \dm \tau	
+\end{equation*}
+Since the above integral runs over $\tau$ and not $t$, the expression reduces to
+\begin{equation*}
+	C_{k}e^{j2\pi kt/T}\int_{-\infty}^{\infty} \! {h(\tau) \cdot e^{-j2\pi k\tau/T}} \ \dm \tau
+\end{equation*}
+The integral reduces to a constant dependant on $k$. So, what we obtain is quite interesting as it is simply the input itself multiplied by a constant!
+Let us denote the constant by $\mathcal{H}(k)$. So, the output, which is the sum of the outputs obtained for each component, is
+\begin{equation*}
+	\sum_{k=-\infty}^{\infty}\mathcal{H}(k)C_{k}e^{j2\pi kt/T}	
+\end{equation*}
+%%%
+%%%
+\section {Conclusion} In this chapter, we discussed about sinusoidal inputs to LSI systems, Fourier series decomposition, its properties and its application in analysing linear shift invariant systems. In the coming chapters, we will discuss the significance of the quantity $\mathcal{H}(k)$ we derived in previous section and begin with what is known as the Fourier Transform.

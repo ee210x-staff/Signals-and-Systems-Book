@@ -1,0 +1,311 @@
+\section{Module 4: Lecture 5\\Region of Convergence(ROC), Convolution Property and System Function}
+
+
+\subsection{Introduction}
+In the last session we saw the very important property of the Laplace transform and z-transform that, when we convolve two signals, their Laplace transform or {z-transform are multiplied. In this session we talk about region of convergence(ROC) of the Laplace transform and z-transform of output and how Laplace transform or z-transform of the impulse response together with its ROC gives complete information about the system.  \\
+We saw that if
+\[
+x(t) \xrightarrow{\ \mathcal{L}\ } X(s)\ ;\ R_X
+\]
+and 
+\[
+h(t) \xrightarrow{\ \mathcal{L}\ } H(s)\ ;\ R_H
+\] then if $y(t)= x(t)*h(t)$, then
+\[
+y(t) \xrightarrow{\ \mathcal{L}\ } X(s)H(s)\ ;\ R_Y
+\]
+This is called the convolution property of the Laplace transform.\\
+What will be the ROC of $Y(s)$, and how will it be related to the ROCs of $X(s)$ and $H(s)$?
+
+\subsection{ROC}
+We saw that the Laplace transform of $y(t)$ was $Y(s)$, which is given by 
+\[
+Y(s)= \Big(\int_{-\infty}^{\infty}{x(t)e^{-st}dt}\Big)\Big(\int_{-\infty}^{\infty}{h(\lambda)e^{-s\lambda}d\lambda}\Big)
+\]
+Consider some $s_i$ such that $s_i \in R_X \cap R_H $. It is clear that this product will \textbf{definitely converge} for this $s_i$. So, region of convergence includes this intersection. \[ R_X \cap R_H \subset R_Y \] The ROC \emph{can} include points other than those lying in this intersection. 
+%This is a very important property, this has serious implications for linear shift invariant(LSI) systems. \\
+%For a Linear shift-invariant system, where we have an input and impulse response both of which have \textit{Laplace transform}s. That means, if we can ensnare both of them by an appropriate complex exponential by a decaying complex exponential then you can apply this property. \\
+%So now consider a linear shift-invariant system S as follow,
+%input $x(t)$ is such that
+%\[
+%x(t) \xrightarrow{\ \mathcal{L}\ } X(s)\ ;\ R_X
+%\]
+%and similarly 
+%\[
+%h(t) \xrightarrow{\ \mathcal{L}\ } H(s)\ ;\ R_H
+%\] And if $y(t)= x(t)*h(t)$ then
+%\[
+%y(t) \xrightarrow{\ \mathcal{L}\ } X(s)H(s)\ and \ R_Y = at least R_X \cap R_H  
+%\]
+\subsection{New way to characterize the LSI systems}
+Consider a LSI system with an impulse response $h(t)$. Now, if the input signal and output signal are respectively $x(t)$ and $y(t)$, then we have \[y(t)=x(t)*h(t) \].
+Hence, by the convolution property of the Laplace transform, we have
+\[
+y(t) \xrightarrow{\ \mathcal{L}\ } X(s)H(s)\  
+\]
+with the Region of convergence $R_Y \subset R_X \cap R_H $. Hence we can write 
+\[ 
+H(s) = \frac{Y(s)}{X(s)}
+\]
+And here $H(s)$ is independent of input. This $H(s)$ together with its ROC $R_H$ characterize the linear sift invariant system completely.
+If we can invert this Laplace transform, then we know the impulse response, and hence know everything about the system.\\
+For this reason, $H(s)$ is called the \emph{system function} of the system $S$. So, a system function of an LSI system is equal to the Laplace transform of the impulse response of that system, together with its ROC.
+%\subsubsection{Question}
+%If a LSI is given, input x(t) is such that
+%\[
+%x(t) \xrightarrow{\ \mathcal{L}\ } X(s)\ ;\ R_X
+%\]
+%and its impulse response
+%\[ h(t) = e^{2t}u(t) \]
+%We can clearly see that system function of this LSI system is $ =%\frac{1}{s-2}$ and $R_H > 2$ and if
+%\[
+%y(t) \xrightarrow{\ \mathcal{L}\ } Y(s)\ ;\ R_Y
+%\]
+%then what can we say about $R_X$ and $R_Y$ ?
+\subsection{Convolution property for the z-transform}
+Let $x[n]$ and $h[n]$ be two sequences such that
+\[
+x[n] \xrightarrow{\ \mathcal{Z}\ } X(z)\ ;\ R_X
+\]
+and
+\[
+h[n] \xrightarrow{\ \mathcal{Z}\ } H(z)\ ;\ R_H
+\]
+Let $y[n] = (x*h)[n]$, where (*) implies convolution. Hence,
+\[
+y[n] = \sum\limits_{m = -\infty}^{\infty} x[m] \cdot h[n-m]
+\]
+Therefore,
+\[
+Y(z) = \sum\limits_{n=-\infty}^{\infty} y[n]z^{-n} = \sum\limits_{n = -\infty}^{\infty}\Big(\sum\limits_{m = -\infty}^{\infty} x[m]\cdot h[n-m]\Big) z^{-n}
+\]
+Replace $(n-m)$ by $l$. Hence $n= l+m$. Also, for a fixed $m$, as $n$ goes from $-\infty$ to $\infty$, $l$ also goes from -$\infty$ to $\infty$. Therefore
+\[
+Y(z)= \sum\limits_{m=-\infty}^{\infty}{\sum\limits_{l=-\infty}^{\infty} x[m].h[l]} z^{-(m-l)}
+\]
+\[
+Y(z)= \sum\limits_{m=-\infty}^{\infty}{\sum\limits_{l=-\infty}^{\infty} x[m].h[l]} z^{-(m+l)}
+\]
+\[
+Y(z)= \Big({\sum\limits_{n=-\infty}^{\infty} x[m]z^{-m}} \Big) \Big({{ \sum\limits_{m=-\infty}^{\infty} h[l]} z^{-l}}\Big)
+\]
+Hence, we have the following property:
+\[
+Y(z)=X(z) \cdot H(z)
+\]
+For $z\in (R_X\cap R_H)$, $Y(z)$ definitely converges. Therefore, when two sequences are convolved, their corresponding z-transforms are multiplied. And the region of convergence of this multiplication is \emph{at least} the intersection of the regions of convergence of the corresponding original signals.\\
+Now, let us consider an example where the ROC is a null set.
+\subsubsection{ROC is a Null Set}
+Let us take an example of this.
+\[ 
+x[n]  =   2^n,\forall n
+\]
+$x[n]$ can be simplified as
+\[
+x[n]  =    2^n u[n]+ 2^n u[-n-1]
+\]
+what we are trying to say is that
+for n from -$\infty$ to -1, 	$x[n]  =   2^n u[-n-1]$
+for n from 0 to $\infty$, 		$x[n]  =   2^n u[n]$
+Now 
+\[
+2^n u[n] \xrightarrow{\mathcal{Z}} \frac{1}{1-2z^{-1}} |z| > 2
+\]
+and 
+\[
+2^n u[-n-1] \xrightarrow{\mathcal{Z}} \frac{-1}{1-2z^{-1}} |z| < 2
+\]
+Adding these two we get
+\[
+x[n]\xrightarrow{\mathcal{Z}} X(z)
+\]
+\[
+X(z) =0;
+\]
+But the region of convergence is null($\emptyset$). This means that $X(z)$ has no region of convergence.
+So, in the traditional sense $x[n] = 2^n,\forall n$ has no z-transform.\\
+Now, we had said earlier that the ROC of the Laplace (or z-) transform of a convolution is at least a subset of $R_X \cap R_H$. Let us two examples, on in which it is indeed a subset, and other in which it contains more points than the subset.
+\subsection{Examples}
+\subsubsection{ROC is a subset of $R_x \cap R_H$}
+Let $x(t)$ and $h(t)$ be two signals given by
+\[
+x(t)= e^{2t}u(t)
+\]
+\[
+h(t)= e^{3t}u(t)
+\]
+Then, we have
+\[
+[x*h](t)  = \int_{-\infty}^{\infty}{e^{2\tau}u(\tau)e^{3(t-\tau)}u(t-\tau))d\tau} 
+\]
+\[
+=\int_{0}^{t}\{ {e^{2\tau}e^{3(t-\tau)}d\tau \} } \ \text{for } t \geq 0
+\]
+\[
+= u(t) \int_{0}^{t}\{ {e^{2\tau} e^{3t} e^{-3\tau}d\tau \} } 
+\]
+\[
+= e^{3t}u(t) \int_{0}^{t}{e^{(2-3)t}d\tau}
+\]
+
+\[
+= e^{3t}u(t)\int_{0}^{t}{e^{(-\tau)}d\tau} = (e^{3t}-e^{2t})u(t)
+\]
+Here we can see that the \emph{
+convolution of these two exponential is actually a linear combination of those exponential.} This is a very important property of exponential.\\
+Now we can find the \textit{Laplace transform} using linearity.
+\[
+Y(s) = \frac{1}{(3-s)}e^{(3-s)t}\Big|_0^{\infty} -  \frac{1}{(2 - s)}e^{(2-s)t}\Big|_0^{\infty}
+\]
+\[
+\mathbf{Y(s) = \frac{1}{(s - 3)} - \frac{1}{(s - 2)}}
+\]
+\[
+R_Y = Re(s) > 2 \cap R_e(s) > 3
+\]
+\[
+\mathbf{R_Y : Re(s) > 3}
+\]
+We can simplify it further 
+\[
+Y(s)=\frac{1}{(s-2)(s-3)}
+\]
+And here the Laplace transform of $y(t)$ is product of the Laplace transforms of the individual exponential.
+%\subsection{Convolution Property of \textit{Laplace transform}}
+%when we convolve two signals, their \textit{Laplace transform}s are multiplied. 
+\subsubsection{Expansion of ROC}
+Let $X(z)$ and $H(z)$ be the z-transforms of the sequences $x[n]$ and $h[n]$ respectively, with regions of convergence $R_X$ and $R_H$ respectively. It may be possible that the function $X(z)\cdot H(z)$ will have a region of convergence which is larger than $R_X \cap R_H$. \\
+Let us take an example.
+Let there be two sequences $x[n]$ and $h[n]$
+\[ 
+x[n]=   2^n u[n] 
+\]
+and
+\[
+h[n]= \{ 1,-2 \}
+\]
+that is,
+\begin{displaymath}
+   h[n] = \left\{
+     \begin{array}{lr}
+       1 & :  n =0\\
+       2 & : n = 1\\
+       0 & :\text{otherwise}\\
+     \end{array}
+   \right.
+\end{displaymath}
+We know that this $x[n]$ has the ROC given by $R_X: |z|>2$. Now,
+\[
+H(z)= \sum\limits_{n=-\infty}^{\infty} h[n]z^{-n}
+\]
+\[
+= 1 - \frac{2}{z}
+\]
+This $H(z)$ has the ROC $R_H: |z|\neq 0$.\\ Hence we have,
+\[
+R_X \cap R_H : |z|>2
+\]
+Now, let
+\[
+y[n]=   (x*h)[n]
+\]
+\[
+= \sum\limits_{m=-\infty}^{\infty}x[m]\cdot h[n-m]
+\]
+\[
+= \sum\limits_{m=-\infty}^{\infty}x[n-m]\cdot h[m]
+\]
+\[
+= x[n]h[0]+x[n-1]h[1]  
+\]
+\[
+= 2^n u[n] - 2.2^{n-1} u[n-1]
+\]
+Hence,
+\begin{displaymath}
+   y[n] = \left\{
+     \begin{array}{lr}
+       1 & :  n =0\\
+       0 & :  \text{otherwise} \\
+     \end{array}
+   \right.
+\end{displaymath} 
+Hence,
+\[
+y[n]= \delta [n]
+\]
+and
+\[
+Y(z) = 1
+\]
+Hnce $Y(z)$ has the entire complex plane as the region of convergence, whereas $ R_X \cap R_H = |z|>2$. This is an example of the expansion of ROC (region of convergence) beyond intersection.
+\subsection{System Function}
+A LSI system for which the impulse response has
+\begin{itemize}
+\item A Laplace transform if on the continuous independent variable, or
+\item A z-transform if on the discrete independent variable
+\end{itemize}
+then it is said to have a \emph{system function}.\\
+The system function for a continuous independent variable system (respectively a discrete independent variable system) is a Laplace transform (respectively a z-transform) and therefore has both, an expression (in $s$-domain or in $z$-domain at respective place) and a Region of Convergence (ROC).\\
+Earlier we described the systems by their frequency response, which was a function of the angular frequency ($\omega$) or cycles per second frequency (f). but there was no notion of ROC. The notion of ROC becomes important because we are dealing with systems, which are possibly unstable, which could be non-causal or both.
+\subsection{Importance of Region of Convergence}
+We have seen cases where the same expression with different ROC will give you different functions underlying and that would be true for impulse response also.\\
+So, the ROC is always there, associated with the system function, whether we state it explicitly or not. In some cases the ROC will be obvious from the context.\\
+Let us take an example to understand all of this. \\
+Consider two systems with impulse responses 
+\[
+h_1(t) = e^{2t} \cdot u(t)
+\]
+\[
+h_2(t) = -e^{2t} \cdot u(-t)
+\]
+,respectively. This implies that and
+\[
+H_1(s) = \frac{1}{s-2}  ROC : Re(s) > 2
+\]
+\[
+H_2(s) = \frac{1}{s-2}  ROC : Re(s) < 2
+\]
+So, we see that the system with impulse response $h_1 (t)$ is causal and the system with impulse $h_2 (t)$ is non-causal. Both have the same expression for the system function but have different ROC.
+Therefore, if we are told that the system is causal, given that the expression is $ \frac{1}{(s-2)}$ then there is only one possible ROC i.e. $Re(s)>2$.
+In many cases, the context might make the ROC clear. But the ROC is always associated with the system function. The expression and the ROC together constitute the system function.
+\subsection{System Function as Ratio of transforms}
+We have seen for an LSI system, the Laplace transforms of the input, output and the impulse response are related by
+\[
+H(s)=\frac{Y(s)}{X(s)}
+\]
+This is also true for discrete systems, owing to the convolution property of the z-transform.
+\[
+H(z)=\frac{Y(z)}{X(s)}
+\]
+Hence, 
+\[
+H(s) = \frac{\text{Output Laplace transform}}{\text{Input Laplace transform}} \    \text{for continuous variable}
+\]
+and
+\[
+Y(z)= \frac{\text{Output z-transform}}{\text{Input z-transform}} \    \text{for discrete variable}
+\]
+provided that the transforms exists. \\
+We cannot talk about a LSI system which has a system function if the input and/or the output do not have a Laplace transform or z-transform. In that case this definition is not meaningful.\\
+In case we have an LSI system with a system function but the input does not have a Laplace transform or z-transform, then to find the output we have to take the inverse of the system function to get the impulse response and then convolve the impulse response with the input to get the output.
+\subsection{A Neat Way to Convolve}
+The operation of convolution, which can be tedious sometimes, can be made easier using the Laplace or z-transform. Multiply the Laplace transforms (respectively z-transforms) of the signals to be convolved in the continuous (respectively discrete) independent variable. Then take the inverse Laplace transform (respectively inverse z-transform), keeping in mind the ROC.\\
+The Laplace transform and z-transform allows you to convolve conveniently if the inversion of the Laplace transform or z-transform is convenient. It makes sense only when it is easy to go the $s$-domain or $z$-domain from the natural domain and if it is easy to come out of the $s$-domain or $z$-domain to the natural domain. Otherwise it is better to convolve in the natural domain directly.
+%\subsection{Most Typical Impulse Response}
+%Essentially, it is a linear combination of “Poly ex” terms. "Poly ex" stands for \textbf{polynomial} multiplied by \textbf{exponential}.It is of the form, it a linear combination terms like $(a+bt)\cdot e^{-\alpha t}$ with different exponential parameters. Here  $(a+bt)$ is the polynomial part and $e^{-\alpha t}$ is the exponential part where '$\alpha$' is the exponential parameter.
+\subsection{Conclusion}
+In this session we commented about region of convergence(ROC) of the output of the LSI system which is convolution of the input and impulse response of the system. We saw that how Laplace transform of impulse response together with its ROC gives the complete information about the system. We talked about the System Function also. In the next lecture, we will see how to deal with a class of typical impulse responses found in Nature, which are called ``poly-ex" terms.
+
+
+
+
+
+
+
+                
+
+
+
+                     
+

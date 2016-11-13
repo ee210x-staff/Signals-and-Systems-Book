@@ -1,0 +1,122 @@
+\section{Lecture 14: Conditions for Stability}
+
+
+
+Let us try to see whether system is stable or not, from its impulse response. First we will discuss about the discrete case, and then move on to continuous variable case. In both cases, that a system is stable means it gives a bounded output for every bounded input, or a bounded input signal always yields a bounded signal as an output.
+\subsection{Stability of LSI system from it's impulse response: Discrete variable.}
+ For discrete variable systems, output is related to the input by the following equation:
+\begin{equation}
+y[n]=\sum_{\kappa=-\infty}^{+\infty} h[\kappa]x[n-\kappa] \nonumber
+\end{equation}
+As we are concerned whether output is bounded or not, we need to look at the modulus of the output, i.e.
+\begin{equation}
+|y[n]|=|\sum_{\kappa=-\infty}^{+\infty} h[\kappa]x[n-\kappa]| \nonumber
+\end{equation}
+But we know that, in general,
+\begin{equation}
+|\sum a_{i}| \le \sum|a_{i}| \nonumber
+\end{equation}
+So 
+\begin{equation}
+|y[n]|\le\sum_{\kappa=-\infty}^{+\infty} |h[\kappa]x[n-\kappa]| \nonumber
+\end{equation}
+Or,
+\begin{equation}
+|y[n]|\le\sum_{\kappa=-\infty}^{+\infty} |h[\kappa]||x[n-\kappa]| \nonumber
+\end{equation}
+BUt we know that the input signal is bound, say $x[n] \le M_{x}, \forall n$. So
+\begin{equation}
+|y[n]|\le M_{x}\sum_{\kappa=-\infty}^{+\infty} |h[\kappa]| \nonumber
+\end{equation}
+Clearly, if $\sum_{\kappa=-\infty}^{+\infty} |h[\kappa]|$ is finite, then $|y[n]|$ is finite. This is the sufficient condition for a system to be stable. The quantity $\sum_{\kappa=-\infty}^{+\infty} |h[\kappa]|$ is called as the 'absolute sum' of $h$.\\
+In general, if we have a sequence $\{ a_{n}\}$ then the quantity  $\sum_{\kappa=-\infty}^{+\infty} |\{ a_{n}\}|$ is called as the absolute sum of sequence $\{ a_{n}\}$. In short, we take the absolute value of the each term of the sequence, and add those to get the absolute sum of a sequence.\\
+If indeed $h[n]$ is absolutely summable, i.e. its absolute sum is a finite number/absolute sum is convergent, then we can say for some $ M_{h}$ lying between $0$ and $\infty$,
+\begin{equation}
+ \sum_{\kappa=-\infty}^{+\infty} |h[\kappa]|\le M_{h} \nonumber
+\end{equation}
+So our output in that case becomes
+\begin{equation}
+|y[n]| \le M_{x}M_{h} \nonumber
+\end{equation}
+This is very important. It means that the sufficiency condition which we have is a constructive condition. It not only tells that the output is bounded, but also talks about its bound.
+
+
+
+
+\subsection{Stability of LSI system from it's impulse response: Continuous variable.}
+ For continuous variable systems, output is related to the input by the following equation:
+\begin{equation}
+y(t)=\int_{-\infty}^{+\infty} h(\tau)x(t-\tau)\,d\tau \nonumber
+\end{equation}
+As we want to discuss about the boundedness of $y(t)$, we will take modulus on both sides:
+\begin{equation}
+|y(t)|=|\int_{-\infty}^{+\infty} h(\tau)x(t-\tau)\,d\tau| \nonumber
+\end{equation}
+Using the identity
+\begin{equation}
+|\int f(x) dx| \le \int|f(x)| dx \nonumber
+\end{equation}
+We get
+\begin{equation}
+|y(t)|\le\int_{-\infty}^{+\infty}| h(\tau)x(t-\tau)\,|d\tau \nonumber
+\end{equation}
+So
+\begin{equation}
+|y(t)|\le\int_{-\infty}^{+\infty}| h(\tau)||x(t-\tau)\,|d\tau \nonumber
+\end{equation}
+But we know that, as input $x(t)$ is bounded,
+\begin{equation}
+|x(t)| \le M_{x} \quad \forall t, 0 \le M_{x}< \infty \nonumber
+\end{equation}
+So 
+\begin{equation}
+|y(t)|\le\int_{-\infty}^{+\infty}| h(\tau)|M_{x}\,d\tau \nonumber
+\end{equation}
+We observe that, $y(t)$ will be bounded if $\int_{-\infty}^{+\infty}| h(\tau)|\,d\tau$ is bounded. And that is the sufficient condition for a continuous variable system to be stable. Now this integral $\int_{-\infty}^{+\infty}| h(\tau)|\,d\tau$ is called the 'absolute integral' of $h(\tau)$, similar to the absolute sum.\\
+In this case also, we can estimate the bound on the output as follows:\\
+Let
+\begin{equation}
+\int_{-\infty}^{+\infty}| h(\tau)|\,d\tau \le M_{h}. \nonumber
+\end{equation}
+Substituting this in the equation we got for the output,
+\begin{equation}
+|y(t)|\le M_{x}M_{h} \nonumber
+\end{equation}\\\\
+Note that, we have discussed here only the sufficiency of the conditions for the stability of systems, both discrete and continuous. We still need to ponder upon whether these conditions are necessary for a system to be stable.
+
+
+\subsection{Necessity of the condition for stability}
+We will now discuss about the necessity of the condition for the stability for discrete variable systems. The proof for continuous variable systems is very similar. We will assume that the output obtained from a system, $y[n]$, when it receives a bounded input is also bounded, i.e.
+\begin{equation}
+|y[n]| \le M_{y} \quad \forall n, 0 \le M_{y}< \infty \nonumber
+\end{equation}
+And try to reach at the necessary condition we had earlier got, i.e. try to prove that the absolute sum of $h[n]$ is finite. For that, we will give a specific bounded input to the system, and observe output at a specific point, which should also be bounded if we indeed have a stable system( from our assumption). We know that the input and output for a discrete variable system are related through the following equation:
+\begin{equation}
+y[n]=\sum_{\kappa=-\infty}^{+\infty} h[\kappa]x[n-\kappa] \nonumber
+\end{equation}
+Now consider that we are looking at the output when $n$ is equal to zero. So the equation now becomes
+\begin{equation}
+y[0]=\sum_{\kappa=-\infty}^{+\infty} h[\kappa]x[-\kappa] \nonumber
+\end{equation}
+Basically we are trying to bring the absolute sum as an output for some suitable input, which is bounded, and once it is done, we will have proven the necessity of the condition for stability. And the input we choose to give to the system is the following:
+\begin{eqnarray*}
+x[n]&=&\frac{\overline{h[-n]}}{|h[-n]|}\quad , if h[-n]\neq 0 \\
+       &=&0                         \quad   \quad \quad, if h[-n]=0
+\end{eqnarray*}
+Where $\overline{h[-n]}$ is the complex conjugate of $h[-n]$. So when we apply it in the equation, it becomes
+\begin{eqnarray*}
+n=-\kappa\quad So\\
+x[-\kappa]&=&\frac{\overline{h[\kappa]}}{|h[\kappa]|}\quad , if h[\kappa]\neq 0 \\
+       &=&0                         \quad   \quad \quad, if h[\kappa]=0
+\end{eqnarray*}
+So we have the equation
+\begin{equation}
+y[0]=\sum_{\kappa=-\infty}^{+\infty} h[\kappa]x[-\kappa] \nonumber
+\end{equation}
+After substituting $x[-\kappa]$, it becomes
+\begin{eqnarray*}
+y[n]&=&\sum_{\kappa=-\infty}^{+\infty}\frac{h[\kappa]\overline{h[\kappa]}}{|h[\kappa]|}\quad , if h[\kappa]\neq 0 \\
+       &=&\quad\quad\quad0                         \quad \quad  \quad \quad, if h[\kappa]=0\\
+       &=&\sum_{\kappa=-\infty}^{+\infty}|h[\kappa]|
+\end{eqnarray*}
+Which is the absolute sum of the impulse response. Now as $y[n]$ is bounded, $y[0]$ must be finite and so must be the absolute  sum. Hence we have proved the necessity of the absolute sum of the impulse response being finite for the system being stable. The proof for the continuous variable systems is very similar. It is left to you as an exercise.

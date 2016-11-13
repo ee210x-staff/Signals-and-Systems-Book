@@ -1,0 +1,66 @@
+\section{Module 1: Lecture 6\\ Impulse Response: A Building Block for Continuous Functions}
+
+	
+
+\subsection{Introduction}
+As mentioned in the previous lecture, systems which obey the three properties of additivity, homogeneity and shift-invariance are desirable since they are easy to analyse and build. In this lecture, we will make a start to understand why this is so, by introducing the concept of narrow pulses. 
+
+\subsection{Narrow pulses}
+Narrow pulses can be used to construct \textit{reasonable signals}. Reasonable signals or smooth signals are those which do not have infinite number of discontinuites in a finite interval. Therefore, there exists an interval where the signal is continuous. Consider the signal over such an interval. 
+\\
+
+%add diagram here
+Divide the interval into sub-intervals of size as small as can be. Consider one such sub-interval. As the width of this sub-interval grows smaller and smaller, the value that the signal takes over it does not change much and is almost a constant. 
+%add diagram of pulse of width \Delta here
+\\
+
+Consider a narrow pulse of width $\Delta$. Let its height be $\frac{1}{\Delta}$, such that its area is unity. This is our basic building block. When this pulse is placed a point in time $t$ and multiplied by the signal, we get a pulse of height \textit{proportional} to the (constant) value of the signal in that interval (the proportionality factor being  $\frac{1}{\Delta}$). 
+
+Now copy and shift the initial pulse (of width $\Delta$ and height $\frac{1}{\Delta}$) in the time-axis in steps of $\Delta$ so as to cover the entire time-axis. Multiply it by the signal and combine all of it together. We get back something very similar to the original signal. Smaller the pulse width, more the similarity to the original signal. 
+%add diagram here
+
+\subsection{Sifting property}
+Let $x(t)$ be the continuous function. Reconsider the narrow pulse that we constructed in the previous lecture, placed at $t = 0$. It has width $\Delta$ and height $\frac{1}{\Delta}$. This can be called as {\bf $\delta_{\Delta}(t)$}. %add figure here!! 
+\\
+
+Place one such pulse (red) at $t = t_{0}$ on the time-axis as shown in figure ..It is $\delta_{\Delta}(t - t_{0})$. Multiply $x(t)$ with $\delta_{\Delta}(t - t_{0})$ and integrate over all time $t$. That is,
+\begin{equation} \label{int}
+\int_{-\infty}^\infty x(t) \delta_{\Delta}(t - t_{0}) dt 
+\end{equation}
+If $\Delta $ is small enough, the function over the non-zero part of the pulse is almost a constant which can be taken to be $x(t_{0})$. So the above integration simply picks out the value of the function at one point $t_{0}$. This can be seen in the following.
+\begin{equation}
+x(t) \delta_{\Delta}(t - t_{0}) \equiv x(t_{0}) \delta_{\Delta}(t - t_{0})
+\end{equation} 
+This is true because the product of the function and the narrow pulse is zero everywhere except over the small interval around $t_{0}$, where the function is almost a constant. Now keeping in mind that the area of $\delta_{\Delta}(t)$ pulse is unity, if we were to perform the integration as \eqref{int}, we would get,
+\begin{equation}
+\begin{split}
+\int_{-\infty}^\infty x(t) \delta_{\Delta}(t - t_{0}) dt  & = \int_{-\infty}^\infty x(t_{0}) \delta_{\Delta}(t - t_{0}) dt \\
+& = x(t_{0})  \int_{-\infty}^\infty \delta_{\Delta}(t - t_{0}) dt \\
+& = x(t_{0})
+\end{split}
+\end{equation} 
+So the $\delta_{\Delta}(t - t_{0})$ pulse is like a sieve which sifts or picks out the value of the function at $t_{0}$. 
+
+\subsection{Stitching together a function with narrow pulses}
+We can derive a different interpretation of this integration property. Construct the $\delta_{\Delta}(t)$ pulse to be symmetric about the $t$-axis such that $\delta_{\Delta}(-t) = \delta_{\Delta}(t)$.  %add figure here!!
+Since, 
+\begin{equation} \label{sift}
+\int_{-\infty}^\infty x(t) \delta_{\Delta}(t - t_{0}) dt = x(t_{0})
+\end{equation}
+it is true that, 
+\begin{equation} \label{const}
+\int_{-\infty}^\infty x(t) \delta_{\Delta}( t_{0} - t) dt = x(t_{0})
+\end{equation}
+The meanings of the equations \eqref{sift} and \eqref{const} are very different. \eqref{sift} says that multiplying a function by the narrow pulse and integrating over all time results in pulling out the value of the function at the point at which the pulse is located.
+\\
+
+For interpreting the meaning of \eqref{const}, consider $t_{0}$ to be the basic variable by which the function is indexed/described. Take any point t and multiply the value of the function at that point $x(t)$ with the narrow pulse at that point. Then take a sum over all such $t$. This sum tends to an integral in the limit. This integral which is the limit of this sum is precisely given by \eqref{const}. It can be thought of as,
+\begin{equation}
+x(t_{1})\delta_{\Delta}(t_{0} - t_{1}) + x(t_{2})\delta_{\Delta}(t_{0} - t_{2}) + x(t_{3})\delta_{\Delta}(t_{0} - t_{3}) + ...
+\end{equation}
+Graphically, it means, %attach figure here!!
+Put a narrow pulse at every possible $t_{0}$ and multiply with the function value at that point. So each pulse will have a height $=$ \textit({value of the function at that point}) ($\frac{1}{\Delta}$). As there is a continuum of pulses, combining the pulses leads to the integral whose value is nothing but the function itself, in the limit $\Delta \rightarrow 0$. This gives the interpretation that 
+{\bf Every function is a combination of an infinite number of very narrow pulses}.
+\\
+
+Note that these narrow pulses are such that even as $\Delta$ goes to zero, the height grows as $\frac{1}{\Delta}$, keeping the area always equal to unity. 

@@ -1,0 +1,49 @@
+\section{Lecture 16: The Convolution Operator}
+
+\subsection{Introduction}
+In the previous lecture, we used the Train-Platform analogy, to look at discrete convolutions. In this lecture, we will extend this analogy to continuous independent variable convolutions. We will also take some examples to illustrate the concept. We'll then look at some properties of the convolution operator in the next lecture.
+
+\subsection{Convolution of Continuous Signals}
+
+In the previous lecture, we defined the convolution of two discrete signals $x[n]$ and $y[n]$ as:
+\begin{equation}
+\label{eqn:discon}
+\left(x \ast y\right)[n] = \sum_{k=-\infty}^{+\infty} x[k]\ y[n-k]
+\end{equation}
+
+If we want to write a similar expression for continuous signals, we just replace the summation by an integration. The convolution of two continuous signals $x(t)$ and $y(t)$ is:
+\begin{equation}
+\label{eqn:contcon}
+(x\ast y)(t) =\int\limits_{\tau=-\infty}^{+\infty} x(\tau)\ y(t-\tau)\ d\tau
+\end{equation}
+
+\subsection{Convolution of continuous signals -- Example}
+
+Let's take an example to illustrate this concept. Consider a pulse: (the platform)
+$$x_2(t) = B\left[ u(t-t_2) - u(t-(t_2 + T_2))\right]$$ being convolved with: (the train) $$x_1(t) = A\left[ u(t-t_1) - u(t-(t_1 + T_1))\right]$$ (where $u(t)$ is the unit step function)
+
+Note that $x_1$ and $x_2$ are just pulses of height $A$ and $B$, starting at $t=t_1$ and $t=t_2$, and of length $T_1$ and $T_2$, respectively. Assume, for the moment, that $T_2 > T_1$ (We will soon show that this assumption can be made without loss of generality, when we prove Commutativity of Convolution). Now, we know from Equation~\ref{eqn:contcon} that
+$$(x_2\ast x_1)(t) =\int\limits_{\tau=-\infty}^{+\infty} x_2(\tau)\ x_1(t-\tau)\ d\tau$$
+
+Think of $\tau$ as the indexing on the platform. Thus, we can say that the platform starts at $\tau = t_2$ and goes up till $\tau = t_2 + T_2$, with people uniformly distributed over the whole platform.
+
+Looking at the train, $x_1(t-\tau)=x_1(t_1)$ when $\tau=t-t_1$ and $x_1(t-\tau)=x_1(t_1+T_1)$ when $\tau=t-(t_1+T_1)$. Thus, the ends of the train are at $\tau=t-t_1$ and $\tau=t-(t_1+T_1)$. Until the "front end of the train" reaches the "platform"\ --\ this happens when $\tau=t-t_1 = t_2$\ --\ the value of $(x_2\ast x_1)(t)$ (the number of handshakes) is 0. Similarly, after the "rear end of the train" has left the "platform"\ --\ this happens when $\tau=t-(t_1+T_1) = t_2+T_2$\ --\ the value is 0 again.
+
+In between these two extremes, the value of $(x_2\ast x_1)(t)$ essentially depends only on the amount of "overlap" between the platform and the train. In other words, it depends on how much of the train is on the platform. It can be shown that:
+
+\[
+ (x_2\ast x_1)(t) =
+  \begin{cases}
+   0    & \text{, if } t \leq t_1 + t_2 \\
+   & \phantom{\text{, if $t_1+ (t_2 + T_2) < t \leq (t_1+ T_1) + (t_2 + T_2)$;}}\llap{\text{ (train hasn't reached platform)}} \\
+   A B (t-t_1-t_2)    & \text{, if } t_1 + t_2 < t \leq (t_1+ T_1) + t_2 \\
+   & \phantom{\text{, if $t_1+ (t_2 + T_2) < t \leq (t_1+ T_1) + (t_2 + T_2)$;}}\llap{\text{ (Region 1: train is entering the platform)}}\\
+   A B T_1    & \text{, if } (t_1+ T_1) + t_2 < t \leq t_1+ (t_2 + T_2) \\
+   & \phantom{\text{, if $t_1+ (t_2 + T_2) < t \leq (t_1+ T_1) + (t_2 + T_2)$;}}\llap{\text{  (Region 2: train is fully on the platform)}}\\
+   A B ((t_2+T_2)+(t_1+T_1)-t)    & \text{, if } t_1+ (t_2 + T_2) < t \leq (t_1+ T_1) + (t_2 + T_2) \\
+   & \phantom{\text{, if $t_1+ (t_2 + T_2) < t \leq (t_1+ T_1) + (t_2 + T_2)$;}}\llap{\text{  (Region 3: train is leaving the platform)}}\\
+   0    & \text{, if } (t_1+ T_1) + (t_2 + T_2) < t \\
+   & \phantom{\text{, if $t_1+ (t_2 + T_2) < t \leq (t_1+ T_1) + (t_2 + T_2)$;}}\llap{\text{  (train has left the platform)}}
+  \end{cases}
+\]
+

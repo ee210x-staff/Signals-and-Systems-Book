@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+
+\node[coordinate]       (c0) {};	
+\node[coordinate,label =above:{$k\delta[t]$},right=of c0](c1){};	
+\node[dspfilter,right= of c1,text height=3em,text width=8em,text depth=3em]                    (c2) { System };
+\node[coordinate,label=above:{$kh[t]$},right=of c2]             (c3) {};
+\node[coordinate,right=of c3]          (c4) {};
+		
+\foreach \i [evaluate = \i as \j using int(\i+2)] in {0,2}
+\draw[dspconn] (c\i) -- (c\j);
+
+\end{tikzpicture}

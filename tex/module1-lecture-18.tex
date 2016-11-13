@@ -1,0 +1,47 @@
+\section{Lecture 18: Conclusion of Module 1 \& Summary}
+
+
+\subsection{Introduction}
+We have studied quite a bit about Linear Shift Invariant (LSI) Systems in the previous lectures. In this lecture, we will look at what the typical Input-Output relation of an LSI system looks like.
+
+\subsection{Typical System Description of LSI System}
+
+If you recall, the system description of the RC circuit looked like \[ y(t) + RC\frac{d}{dt}y(t) = x(t)\]
+
+We would like to know what the input-output relation of \emph{any} LSI system looks like, in general.
+
+It turns out that many (continuous variable) LSI systems can be characterized by an equation of the form
+\begin{alignat}{2}
+y(t)& = && A_1\frac{dy(t)}{dt} + A_2\frac{d^2y(t)}{dt^2}+ \cdots + A_N\frac{d^Ny(t)}{dt^N} \nonumber \\
+&+ B_0x(t)\ +\ && B_1\frac{dx(t)}{dt} + B_2\frac{d^2x(t)}{dt^2}+ \cdots + B_M\frac{d^Mx(t)}{dt^M}
+\end{alignat}
+
+where  the coefficients $A_1, A_2, \ldots A_N, B_0, B_1, B_2, \ldots B_M$ are all constants. Also, this equation is linear in all terms. Therefore, this form is called a \textbf{L}inear \textbf{C}onstant \textbf{C}oefficient \textbf{D}ifferential \textbf{E}quation (\textbf{LCCDE})
+
+Similarly, many discrete LSI systems can be characterized by\footnote{Here we have implicitly assumed that the system is causal, but there's no reason to do so. You can have terms like $B_{-1}x[n+1]$.}:
+
+\begin{alignat}{2}
+y[n]& = && A_1y[n-1] + A_2y[n-2] + \cdots + A_Ny[n-N] \nonumber \\
+&+ B_0x[n]\ +\ && B_1x[n-1] + B_2x[n-2] + \cdots + B_Mx[n-M]
+\end{alignat}
+
+This form is called a \textbf{L}inear \textbf{C}onstant \textbf{C}oefficient \textbf{D}iffer\emph{ence} \textbf{E}quation. This too is abbreviated as \textbf{LCCDE}.
+
+We will study these LCCDEs in greater detail when we study Fourier Transforms in subsequent lectures.
+
+\subsection{Summary of Module One}
+In this module, we have looked at Discrete and Continuous Variable systems as abstractions of real-world systems. We have also studied some properties of these systems:
+\begin{enumerate}
+\item Additivity
+\item Homogeneity
+\item Shift Invariance
+\item Memory
+\item Causality
+\item Stability (BIBO Stability)
+\end{enumerate}
+We then saw how Linearity (Additivity AND Homogeneity) and Shift Invariance made systems ``nice'' to study. We then looked at LSI systems in detail -- we observed that for LSI systems, we need only study the output of the system when given a special input, namely the unit impulse. We studied the unit impulse in both Continuous and Discrete contexts. We then studied the \emph{response} to this impulse, which is called the unit impulse response, in some detail. We also saw how we could predict the output of the system to any given input, using convolution.
+
+We then tried to understand the properties of these systems in terms of this impulse response. We saw that an LSI system is causal iff\footnote{This is not a typo! \textbf{iff} stands for "if and only if".} the impulse response is absent until $t=0$. We also saw how absolute summability (for discrete systems) or absolute integrability (for continuous systems) of the impulse response \emph{guarantees} the BIBO Stability of the LSI system.
+
+With this, we conclude module 1 of EE210.1X. In the next month or so, we will study signals and systems in a different "\emph{transformed}" domain, called the frequency domain, using the Fourier Transform.
+

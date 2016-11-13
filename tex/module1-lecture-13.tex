@@ -55,7 +55,7 @@ We can also generalize this to n cascaded LSI systems and say that for any permu
 All of the above discussion is based on the assumption that all the systems we are considering are LSI in nature. While it may be tempting to generalize these seemingly simple results to all systems, and many times we tend to forget to confirm that the system in question is LSI or not before applying such properties, we must be careful. \\
 It turns out that the commutativity and associativity may not hold if the systems $S_{1}$ and $S_{2}$ are not both LSI. For example,\
 Let's say system $S_{1}$ is given by the equation $y(t)=(x(t))^2$ and $S_{2}$ by $y(t)=x(t)+1$. We have taken here continuous variable signals and systems, but the same discussion is valid for the discrete case as well. So if we apply first $S_{1}$ and then $S_{2}$, we will get $y(t)=(x(t))^2 +1$ as the output, while reversing the order, i.e. first applying $S_{2}$ and then $S_{1}$ would yield $y(t)=(x(t)+1)^2$. So the both outputs are clearly different.\\
-But this does not mean that we can hurry and conclude that the resultant systems will {\it never} be the same. Consider, say, $S_{1}$ as $y(t)=x(t)+4$ and $S_{2}$ as $y(t)=x(t)-4$. Now in this case, regardless of which system comes first, we get output $y(t)=x(t)$.\\
+But this does not mean that we can hurry and conclude that the resultant systems will \textit{never} be the same. Consider, say, $S_{1}$ as $y(t)=x(t)+4$ and $S_{2}$ as $y(t)=x(t)-4$. Now in this case, regardless of which system comes first, we get output $y(t)=x(t)$.\\
 Basically, if even one of the systems is not LSI, we cannot say anything about whether those systems follow associativity or commutativity beforehand: we must examine those systems carefully and determine the answer for the individual case.
 
 
@@ -65,7 +65,7 @@ We have noted before that a LSI system can be represented by its impulse respons
 
 \subsubsection{Causality of continuous variable LSI systems}
 
-We say that a system is causal when its output depends only on the past and the current inputs, and {\it not} on the future inputs. We know that, for a continuous independent variable system $S$` having impulse response $h$t, we can relate its input and output by the equation
+We say that a system is causal when its output depends only on the past and the current inputs, and \textit{not} on the future inputs. We know that, for a continuous independent variable system $S$` having impulse response $h$t, we can relate its input and output by the equation
 \begin{equation}
 y(t)=\int_{-\infty}^{+\infty} h(\tau)x(t-\tau)\,d\tau \nonumber
 \end{equation}

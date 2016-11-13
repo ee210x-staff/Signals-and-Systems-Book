@@ -2,10 +2,10 @@
 
 
 \subsection{Introduction}
-With the advent of the internet, the amount of audio, video and image data has gone up. Processing this data for efficient storage and for a better human experience of them is a must. Apart from these types of data, there has also been a rise in data as describing the history of some phenomenon as a result of the numerous scientific experiments conducted and the world of financial markets. Data describing the temperature variation of a region over a region and data describing the variation of the price of a stock over time ar examples. It is imperative to process this kind of data in order to infer from it. A very important characteristic of this kind of data is that it can be described as a function of a variable - discrete or continuous. All this data is just signals. And to process these varied types of signals, we construct systems. And it is these that we ar going to hope to learn in this course. Below, we start with an introduction to abstraction, a process fundamental to the study of signals and systems.
+With the advent of the internet, the amount of audio, video and image data has gone up. Processing this data for efficient storage and for a better human experience of them is a must. Apart from these types of data, there has also been a rise in data as describing the history of some phenomenon as a result of the numerous scientific experiments conducted and the world of financial markets. Data describing the temperature variation over a region, data describing the variation in the price of a stock over time are examples. It is imperative to process this kind of data in order to infer from it. A very important characteristic of this kind of data is that it can be described as a function of a variable - discrete or continuous. We can think of this data as a signal. And to process these varied types of signals, we construct systems. And it is these systems that we plan to learn about in this course. Below, we start with an introduction to abstraction, a process fundamental to the study of signals and systems.
 
 \subsection{Abstractions}
-The process of extracting out common attributes by doing away with the situation specific details irrelevant to the purpose at hand, from apparently different situations, is abstraction. The process of abstraction aids us by reducing our work as we can then conduct a study of all the situations all at once. It also provides us with an opportunity to apply insights from one specific situation to the others. All this is demonstrated by the example below.\\
+The process of extracting out common attributes by doing away with the situation specific details irrelevant to the purpose at hand, from apparently different situations, is abstraction. The process of abstraction aids us by reducing our work as we can then conduct a study of all the situations all at once. It also provides us with an opportunity to apply insights from one specific situation to the others. All this is demonstrated by the example below.
 
 We consider a mass $m$ and a capacitor $C$. Let $F(t)$ be the force acting on the mass and let $v(t)$ be its velocity. From Newton's second law,
 \[
@@ -17,7 +17,7 @@ In the case of the capacitor, if $i(t)$ is the current flowing through the capac
 i(t) = C\frac{dv_{C}(t)}{dt}
 \]
 
-We first notice that both of these are systems. The force $F(t)$ and the current $i(t)$ are the input signals to these systems and the velocity $v(t)$ and the voltage $v_{C}(t)$ are the corresponding output signals.\\
+We first notice that both of these are systems. The force $F(t)$ and the current $i(t)$ are the input signals to these systems and the velocity $v(t)$ and the voltage $v_{C}(t)$ are the corresponding output signals.
 
 If one looks at the above relations carefully, one cannot help
 but notice the striking similarity between the two. If we consider the
